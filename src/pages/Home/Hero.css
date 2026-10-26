@@ -1,0 +1,213 @@
+/* ============================================
+   Hero — Light Editorial · Chinese-Led
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--bg);
+  isolation: isolate;
+}
+
+/* FloatingLines lives in HeroBackground component, z-index 0 */
+
+/* ----- Foreground ----- */
+.hero-foreground {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding-top: var(--nav-h);
+}
+
+.hero-meta-top {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vw, 0.8rem);
+  margin-bottom: clamp(1.2rem, 2.4vw, 2rem);
+}
+
+.hero-title-cn {
+  font-family: var(--font-cn);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 5.4vw, 5.4rem);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title-cn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 36px;
+  height: 1px;
+  background: var(--blue-bright);
+}
+
+.hero-title-en {
+  font-family: var(--font-en);
+  font-weight: 500;
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-subtitle {
+  font-family: var(--font-cn);
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.hero-subtitle-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.hero-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.hero-tag {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.4);
+  transition: border-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.hero-tag:hover {
+  border-color: var(--blue-bright);
+  color: var(--blue-bright);
+}
+
+/* ----- Scroll hint ----- */
+.hero-scroll {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.hero-scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--blue-bright), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--blue-bright), transparent);
+  animation: scrollHint 2.4s var(--ease-out) infinite;
+}
+
+@keyframes scrollHint {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* ----- Frame corners ----- */
+.hero-frame {
+  position: absolute;
+  inset: 20px;
+  z-index: 4;
+  pointer-events: none;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-frame-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-frame-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 600px;
+  }
+  .hero-scroll {
+    right: 20px;
+    bottom: 20px;
+  }
+  .hero-scroll-line {
+    height: 32px;
+  }
+  .hero-frame {
+    inset: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tag {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  .hero-meta-tags {
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-line::after {
+    animation: none;
+  }
+}

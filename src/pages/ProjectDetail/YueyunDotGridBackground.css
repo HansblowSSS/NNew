@@ -1,0 +1,21 @@
+/* Fixed full-viewport layer behind every non-hero section of the
+   Yueyun detail page. Rendered through a portal to <body> so the
+   fixed positioning isn't trapped by the surrounding
+   <PageTransition> wrapper (which has will-change: transform and
+   would otherwise demote fixed to absolute). z-index 1 places it
+   above plain content but well below the nav (200) and custom
+   cursor (9999); the layer is non-interactive so it never blocks
+   clicks / hover on real content. */
+
+.yy-dotgrid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+}
+
+.yy-dotgrid-bg > .dot-grid {
+  width: 100%;
+  height: 100%;
+}

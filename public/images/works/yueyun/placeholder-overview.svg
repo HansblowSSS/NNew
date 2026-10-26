@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="tSH��`M">
+  <defs>
+    <linearGradient id="yy9-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#191817"/>
+      <stop offset="100%" stop-color="#10100F"/>
+    </linearGradient>
+    <radialGradient id="yy9-glow" cx="50%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="#C8A66A" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#C8A66A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#yy9-bg)"/>
+  <rect width="1200" height="700" fill="url(#yy9-glow)"/>
+  <ellipse cx="600" cy="640" rx="540" ry="14" fill="#000" opacity="0.5"/>
+  <g fill="none" stroke="#C8A66A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.78">
+    <!-- 6 figure silhouettes in a row -->
+    <g transform="translate(120,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+    <g transform="translate(280,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+    <g transform="translate(440,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+    <g transform="translate(600,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+    <g transform="translate(760,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+    <g transform="translate(920,140) scale(0.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#A7A39B" font-size="9" letter-spacing="2" opacity="0.6">
+    <text x="32" y="42">m>�rtSH��`M � COLLECTION OVERVIEW PLACEHOLDER</text>
+    <text x="32" y="676">I������b</text>
+  </g>
+</svg>

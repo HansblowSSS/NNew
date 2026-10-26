@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid meet">
+  <rect width="600" height="450" fill="#E8DCC8"/>
+
+  <!-- Xiaosheng male character -->
+  <g transform="translate(300, 230)">
+    <!-- Hat -->
+    <ellipse cx="0" cy="-110" rx="55" ry="12" fill="#302C26"/>
+    <path d="M -40 -110 L -50 -135 L 50 -135 L 40 -110 Z" fill="#302C26"/>
+    <ellipse cx="0" cy="-130" rx="40" ry="4" fill="#C78C59"/>
+    <!-- Face -->
+    <ellipse cx="0" cy="-20" rx="55" ry="65" fill="#F4E4D4"/>
+    <!-- Eyebrows -->
+    <path d="M -28 -50 L -8 -45" fill="none" stroke="#302C26" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 8 -45 L 28 -50" fill="none" stroke="#302C26" stroke-width="3" stroke-linecap="round"/>
+    <!-- Eyes (sharp) -->
+    <path d="M -25 -32 L -10 -28" fill="none" stroke="#302C26" stroke-width="2"/>
+    <path d="M 10 -28 L 25 -32" fill="none" stroke="#302C26" stroke-width="2"/>
+    <!-- Nose -->
+    <path d="M 0 -25 L -3 -10 L 3 -10 Z" fill="none" stroke="#A8967A" stroke-width="1"/>
+    <!-- Mouth (smile) -->
+    <path d="M -10 0 Q 0 8 10 0" fill="none" stroke="#C78C59" stroke-width="2" stroke-linecap="round"/>
+    <!-- Collar (robes) -->
+    <path d="M -60 50 L 0 80 L 60 50 L 70 90 L -70 90 Z" fill="#A9B59A"/>
+    <line x1="-30" y1="60" x2="-10" y2="80" stroke="#FFFDF7" stroke-width="1"/>
+    <line x1="30" y1="60" x2="10" y2="80" stroke="#FFFDF7" stroke-width="1"/>
+    <circle cx="0" cy="70" r="3" fill="#FFFDF7"/>
+  </g>
+
+  <g transform="translate(540, 30)" opacity="0.5">
+    <rect x="-50" y="-10" width="100" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FDFAF4" letter-spacing="2">PLACEHOLDER</text>
+  </g>
+  <text x="300" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#756B5E" letter-spacing="3">DONG YAXING � 04</text>
+</svg>

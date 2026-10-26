@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="cu3-bg" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#F4ECDF"/>
+      <stop offset="100%" stop-color="#C78C59"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#cu3-bg)"/>
+
+  <!-- Maotou lion style -->
+  <g transform="translate(200, 200)">
+    <!-- Decorative mane rays -->
+    <g stroke="#302C26" stroke-width="1.5" fill="none">
+      <path d="M -100 -30 Q -110 -80 -90 -120"/>
+      <path d="M -70 -50 Q -75 -100 -55 -135"/>
+      <path d="M -30 -70 Q -30 -110 -10 -140"/>
+      <path d="M 0 -75 Q 0 -115 0 -145"/>
+      <path d="M 30 -70 Q 30 -110 10 -140"/>
+      <path d="M 70 -50 Q 75 -100 55 -135"/>
+      <path d="M 100 -30 Q 110 -80 90 -120"/>
+    </g>
+    <!-- Lion head -->
+    <circle cx="0" cy="-30" r="65" fill="#C78C59" stroke="#302C26" stroke-width="1.5"/>
+    <!-- Forehead pattern -->
+    <path d="M -20 -75 L 0 -90 L 20 -75 L 10 -55 L -10 -55 Z" fill="#E8B47A" stroke="#302C26" stroke-width="1"/>
+    <!-- Big eyes -->
+    <circle cx="-22" cy="-25" r="15" fill="#FFFDF7" stroke="#302C26" stroke-width="1.5"/>
+    <circle cx="22" cy="-25" r="15" fill="#FFFDF7" stroke="#302C26" stroke-width="1.5"/>
+    <circle cx="-22" cy="-25" r="6" fill="#302C26"/>
+    <circle cx="22" cy="-25" r="6" fill="#302C26"/>
+    <!-- Nose -->
+    <ellipse cx="0" cy="0" rx="7" ry="5" fill="#302C26"/>
+    <!-- Mouth -->
+    <path d="M -15 15 Q 0 25 15 15" fill="none" stroke="#302C26" stroke-width="1.5"/>
+    <!-- Decorative cheek -->
+    <circle cx="-35" cy="5" r="5" fill="#A9B59A"/>
+    <circle cx="35" cy="5" r="5" fill="#A9B59A"/>
+    <!-- Tassel -->
+    <g stroke="#C78C59" stroke-width="1" fill="none">
+      <line x1="0" y1="25" x2="-8" y2="50"/>
+      <line x1="0" y1="25" x2="0" y2="55"/>
+      <line x1="0" y1="25" x2="8" y2="50"/>
+    </g>
+  </g>
+
+  <g transform="translate(360, 30)" opacity="0.5">
+    <rect x="-40" y="-10" width="80" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#FDFAF4" letter-spacing="2">PH</text>
+  </g>
+</svg>

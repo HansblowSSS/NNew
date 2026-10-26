@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="ch-bg-1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4ECDF"/>
+      <stop offset="100%" stop-color="#E8DCC8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#ch-bg-1)"/>
+
+  <!-- Cat character (Xian Mumu) -->
+  <g transform="translate(300, 230)">
+    <!-- Body -->
+    <ellipse cx="0" cy="40" rx="100" ry="60" fill="#F8F2E5" stroke="#A8967A" stroke-width="1.5"/>
+    <!-- Head -->
+    <circle cx="0" cy="-30" r="80" fill="#F8F2E5" stroke="#A8967A" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M -60 -90 L -45 -130 L -25 -85 Z" fill="#F8F2E5" stroke="#A8967A" stroke-width="1.5"/>
+    <path d="M 60 -90 L 45 -130 L 25 -85 Z" fill="#F8F2E5" stroke="#A8967A" stroke-width="1.5"/>
+    <path d="M -52 -95 L -45 -115 L -36 -88 Z" fill="#C78C59"/>
+    <path d="M 52 -95 L 45 -115 L 36 -88 Z" fill="#C78C59"/>
+    <!-- Face decoration (wood carving texture) -->
+    <line x1="-50" y1="-30" x2="50" y2="-30" stroke="#A8967A" stroke-width="0.5" opacity="0.3"/>
+    <line x1="-60" y1="-10" x2="60" y2="-10" stroke="#A8967A" stroke-width="0.5" opacity="0.3"/>
+    <!-- Eyes -->
+    <ellipse cx="-25" cy="-30" rx="8" ry="12" fill="#302C26"/>
+    <ellipse cx="25" cy="-30" rx="8" ry="12" fill="#302C26"/>
+    <circle cx="-22" cy="-33" r="2.5" fill="#FFFDF7"/>
+    <circle cx="28" cy="-33" r="2.5" fill="#FFFDF7"/>
+    <!-- Nose -->
+    <path d="M -6 -10 L 6 -10 L 0 -2 Z" fill="#C78C59"/>
+    <!-- Mouth -->
+    <path d="M -8 0 Q 0 8 8 0" fill="none" stroke="#756B5E" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Whiskers -->
+    <line x1="-60" y1="-5" x2="-25" y2="0" stroke="#756B5E" stroke-width="0.8"/>
+    <line x1="60" y1="-5" x2="25" y2="0" stroke="#756B5E" stroke-width="0.8"/>
+  </g>
+
+  <!-- Marker -->
+  <g transform="translate(540, 30)" opacity="0.5">
+    <rect x="-50" y="-10" width="100" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FDFAF4" letter-spacing="2">PLACEHOLDER</text>
+  </g>
+
+  <text x="300" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#756B5E" letter-spacing="3">XIAN MUMU � 01</text>
+</svg>

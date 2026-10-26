@@ -1,0 +1,160 @@
+/* ============================================================
+   Visual Placeholder — dark cinematic, designed to live inside
+   the page's continuous dark environment, not pop out as a debug
+   rectangle.
+   ============================================================ */
+
+.vp {
+  position: relative;
+  width: 100%;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 55%,
+      rgba(200, 135, 74, 0.06) 0%,
+      rgba(16, 16, 15, 0) 60%
+    ),
+    #10100f;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Subtle warm environment glow */
+.vp-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle 380px at 50% 60%,
+      rgba(232, 169, 106, 0.18) 0%,
+      rgba(200, 135, 74, 0.06) 30%,
+      transparent 60%
+    );
+  filter: blur(8px);
+  opacity: 0.9;
+}
+
+/* Silhouette — depends on variant */
+.vp-silhouette {
+  position: absolute;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 19, 0.0) 0%,
+    rgba(20, 20, 19, 0.95) 35%,
+    #15140f 100%
+  );
+  filter: blur(0.5px);
+}
+
+/* Product — centred cylinder silhouette, low/wide */
+.vp--product .vp-silhouette {
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  width: 18%;
+  aspect-ratio: 1 / 1.8;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 169, 106, 0.18) 0%,
+    rgba(40, 32, 24, 0.85) 22%,
+    rgba(20, 18, 16, 0.98) 50%,
+    #131210 100%
+  );
+  box-shadow:
+    0 -8% 25% -2% rgba(232, 169, 106, 0.25),
+    inset 0 0 50% rgba(232, 169, 106, 0.08);
+}
+
+/* Portrait — vertical silhouette, off-centre right */
+.vp--portrait .vp-silhouette {
+  right: 18%;
+  bottom: 8%;
+  width: 22%;
+  aspect-ratio: 1 / 2.2;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 169, 106, 0.14) 0%,
+    rgba(40, 32, 24, 0.85) 28%,
+    rgba(20, 18, 16, 0.98) 55%,
+    #131210 100%
+  );
+  box-shadow: 0 0 80px rgba(232, 169, 106, 0.12);
+}
+
+/* Wide — low landscape, full-width horizon */
+.vp--wide .vp-silhouette {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 18, 16, 0) 0%,
+    rgba(20, 18, 16, 0.6) 40%,
+    #131210 100%
+  );
+}
+
+/* Closeup — abstract warm-light shape, lower-left */
+.vp--closeup .vp-silhouette {
+  left: 22%;
+  bottom: 18%;
+  width: 50%;
+  aspect-ratio: 3 / 2;
+  border-radius: 30% 70% 50% 50%;
+  background: radial-gradient(
+    ellipse at 40% 50%,
+    rgba(232, 169, 106, 0.5) 0%,
+    rgba(200, 135, 74, 0.3) 30%,
+    rgba(40, 32, 24, 0.9) 60%,
+    transparent 90%
+  );
+  filter: blur(12px);
+}
+
+/* Soft vignettes to keep edges dark */
+.vp-veil-top,
+.vp-veil-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  pointer-events: none;
+}
+
+.vp-veil-top {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 16, 15, 0.7) 0%,
+    transparent 100%
+  );
+}
+
+.vp-veil-bottom {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(16, 16, 15, 0.7) 0%,
+    transparent 100%
+  );
+}
+
+/* Dev label — extremely faint, blends with the page */
+.vp-label {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 227, 0.18);
+  user-select: none;
+  pointer-events: none;
+}
+
+.vp--full {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: auto !important;
+}

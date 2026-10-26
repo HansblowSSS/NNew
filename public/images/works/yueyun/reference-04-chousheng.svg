@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="���`M">
+  <defs>
+    <linearGradient id="ref-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B1916"/>
+      <stop offset="100%" stop-color="#10100F"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#ref-bg)"/>
+  <g fill="none" stroke="#C8A66A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M180 136 q20 -28 40 0 q-2 22 -20 26 q-18 -4 -20 -26 z"/>
+    <path d="M196 148 l-6 0 l-2 6 l8 0 z M204 148 l6 0 l2 6 l-8 0 z"/>
+    <path d="M174 128 l52 0 l-4 -10 l-44 0 z"/>
+    <path d="M196 110 l8 -16"/>
+    <path d="M182 164 q-2 8 4 14 l-4 60 l-22 96 l-2 44 l8 6 l4 -8 l6 8 l6 -10 l-2 -42 l16 -56 l16 56 l-2 42 l6 10 l6 -8 l4 8 l8 -6 l-2 -44 l-22 -96 l-4 -60 q6 -6 4 -14 z"/>
+    <path d="M178 260 l44 0 l-4 28 l-36 0 z"/>
+    <path d="M180 180 l-32 64 l4 16 l8 -2 l26 -56"/>
+    <path d="M220 180 l32 64 l-4 16 l-8 -2 l-26 -56"/>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#C8A66A" opacity="0.9">
+    <text x="200" y="40" text-anchor="middle" font-size="13" letter-spacing="4"> / �r��</text>
+    <text x="200" y="58" text-anchor="middle" font-size="9" letter-spacing="3" fill="#A7A39B" opacity="0.7">CHOUSHENG REFERENCE</text>
+  </g>
+</svg>

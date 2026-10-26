@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid meet">
+  <rect width="600" height="450" fill="#E8DCC8"/>
+
+  <!-- Maotou Lion style character -->
+  <g transform="translate(300, 230)">
+    <!-- Decorative mane -->
+    <g stroke="#C78C59" stroke-width="1.5" fill="none">
+      <path d="M -100 -30 Q -110 -60 -90 -90"/>
+      <path d="M -80 -50 Q -85 -80 -65 -110"/>
+      <path d="M -50 -70 Q -50 -100 -30 -125"/>
+      <path d="M 0 -80 Q 0 -110 0 -135"/>
+      <path d="M 50 -70 Q 50 -100 30 -125"/>
+      <path d="M 80 -50 Q 85 -80 65 -110"/>
+      <path d="M 100 -30 Q 110 -60 90 -90"/>
+    </g>
+    <!-- Head -->
+    <circle cx="0" cy="-30" r="75" fill="#C78C59" stroke="#302C26" stroke-width="1.5"/>
+    <!-- Decorative forehead pattern -->
+    <path d="M -25 -75 L 0 -95 L 25 -75 L 0 -55 Z" fill="#E8B47A" stroke="#302C26" stroke-width="1"/>
+    <!-- Big eyes -->
+    <circle cx="-25" cy="-25" r="18" fill="#FFFDF7" stroke="#302C26" stroke-width="1.5"/>
+    <circle cx="25" cy="-25" r="18" fill="#FFFDF7" stroke="#302C26" stroke-width="1.5"/>
+    <circle cx="-25" cy="-25" r="8" fill="#302C26"/>
+    <circle cx="25" cy="-25" r="8" fill="#302C26"/>
+    <circle cx="-22" cy="-28" r="2" fill="#FFFDF7"/>
+    <circle cx="28" cy="-28" r="2" fill="#FFFDF7"/>
+    <!-- Nose -->
+    <ellipse cx="0" cy="0" rx="8" ry="6" fill="#302C26"/>
+    <!-- Mouth -->
+    <path d="M -20 18 Q 0 28 20 18" fill="none" stroke="#302C26" stroke-width="1.5"/>
+    <!-- Cheek decoration -->
+    <circle cx="-40" cy="5" r="6" fill="#A9B59A"/>
+    <circle cx="40" cy="5" r="6" fill="#A9B59A"/>
+  </g>
+
+  <g transform="translate(540, 30)" opacity="0.5">
+    <rect x="-50" y="-10" width="100" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FDFAF4" letter-spacing="2">PLACEHOLDER</text>
+  </g>
+  <text x="300" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#756B5E" letter-spacing="3">MUMU � 02</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="�.���r`M�">
+  <defs>
+    <linearGradient id="yy-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B1916"/>
+      <stop offset="100%" stop-color="#10100F"/>
+    </linearGradient>
+    <radialGradient id="yy-halo" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#9D3935" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#9D3935" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#yy-bg)"/>
+  <rect width="400" height="600" fill="url(#yy-halo)"/>
+  <ellipse cx="200" cy="540" rx="115" ry="9" fill="#000" opacity="0.45"/>
+  <g fill="none" stroke="#C8A66A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <!-- simpler head-dress with side flowers -->
+    <path d="M174 162 q26 -42 52 0 q-4 28 -26 32 q-22 -4 -26 -32 z"/>
+    <path d="M170 152 q-4 -16 6 -30 M230 152 q4 -16 -6 -30"/>
+    <circle cx="166" cy="146" r="6"/>
+    <circle cx="234" cy="146" r="6"/>
+    <!-- face -->
+    <path d="M180 178 q20 -10 40 0 q-2 16 -20 20 q-18 -4 -20 -20 z"/>
+    <!-- shorter, plainer robe -->
+    <path d="M180 200 q-6 6 0 12 l-8 64 l-22 102 l-2 28 l8 6 l6 -8 l4 8 l6 -10 l0 -26 l18 -64 l10 56 l-2 48 l8 10 l6 -10 l6 10 l8 -10 l-2 -48 l10 -56 l18 64 l0 26 l6 10 l4 -8 l6 8 l8 -6 l-2 -28 l-22 -102 l-8 -64 q6 -6 0 -12 z"/>
+    <!-- short sleeves -->
+    <path d="M180 212 l-30 60 l-2 24 l8 4 l4 -8 l24 -54"/>
+    <path d="M220 212 l30 60 l2 24 l-8 4 l-4 -8 l-24 -54"/>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#C8A66A" opacity="0.9">
+    <text x="32" y="48" font-size="11" letter-spacing="3">06 / ERBANG HUADAN</text>
+    <text x="32" y="572" font-size="9" letter-spacing="2" fill="#A7A39B" opacity="0.6">�r`M</text>
+  </g>
+</svg>

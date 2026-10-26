@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="��aG`M">
+  <defs>
+    <linearGradient id="yyb-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B1916"/>
+      <stop offset="100%" stop-color="#10100F"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#yyb-bg)"/>
+  <g fill="none" stroke="#C8A66A" stroke-width="1.6" opacity="0.7" rx="6">
+    <rect x="60" y="80" width="480" height="640" rx="6"/>
+    <rect x="76" y="96" width="448" height="608" rx="4" stroke-dasharray="2 4" opacity="0.5"/>
+  </g>
+  <g fill="none" stroke="#C8A66A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" transform="translate(220,200)">
+    <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+    <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#C8A66A" opacity="0.85">
+    <text x="300" y="120" text-anchor="middle" font-size="13" letter-spacing="6">� � � N</text>
+    <text x="300" y="138" text-anchor="middle" font-size="8" letter-spacing="4" fill="#A7A39B">CANTONESE OPERA COLLECTION</text>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#A7A39B" font-size="11" letter-spacing="3" text-anchor="middle">
+    <text x="300" y="700" opacity="0.85">01 / f </text>
+    <text x="300" y="724" font-size="8" letter-spacing="2" opacity="0.6">WUSHENG</text>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#A7A39B" font-size="9" letter-spacing="2" opacity="0.45">
+    <text x="32" y="780">��aG`M � BLIND-BOX CARD PLACEHOLDER</text>
+  </g>
+</svg>

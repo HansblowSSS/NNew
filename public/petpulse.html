@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>PetPulse — 宠物智能监护</title>
+<style>
+  :root {
+    --red:    #FF3B30;
+    --blue:   #007AFF;
+    --green:  #34C759;
+    --yellow: #FFCC00;
+    --bg:     #000000;
+    --card:   #1C1C1E;
+    --text:   #FFFFFF;
+    --sub:    #8E8E93;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Compact Text", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══════════════════════════════════
+     WATCH FRAME
+     ═══════════════════════════════════ */
+  .watch {
+    width: 215px;
+    height: 262px;
+    background: var(--bg);
+    border-radius: 44px;
+    padding: 16px 18px 14px;
+    position: relative;
+    box-shadow:
+      0 0 0 4px #2a2a2a,
+      0 0 0 7px #1a1a1a,
+      0 0 0 9px #333,
+      0 20px 60px rgba(0,0,0,.6);
+    overflow: hidden;
+    user-select: none;
+    transition: background 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ═══════════════════════════════════
+     SCREEN-LEVEL EMOTION EFFECTS
+     ═══════════════════════════════════ */
+
+  /* Calm — slow blue breathing background */
+  .watch.emotion-calm {
+    animation: bgBreatheBlue 3s ease-in-out infinite;
+  }
+  @keyframes bgBreatheBlue {
+    0%, 100% { background: #000000; }
+    50%      { background: #081525; }
+  }
+
+  /* Happy — green background */
+  .watch.emotion-happy {
+    background: #0D2818;
+    animation: bgBreatheGreen 2.5s ease-in-out infinite;
+  }
+  @keyframes bgBreatheGreen {
+    0%, 100% { background: #0D2818; }
+    50%      { background: #143A24; }
+  }
+
+  /* Angry — fast red border marquee */
+  .watch.emotion-angry {
+    animation: borderFlashRed 0.35s ease-in-out infinite;
+  }
+  @keyframes borderFlashRed {
+    0%, 100% {
+      box-shadow:
+        0 0 0 4px #2a2a2a,
+        0 0 0 7px #1a1a1a,
+        0 0 0 9px #333,
+        0 20px 60px rgba(0,0,0,.6);
+    }
+    30% {
+      box-shadow:
+        0 0 0 4px #FF3B30,
+        0 0 0 7px #FF3B30,
+        0 0 0 9px #FF3B30,
+        0 0 0 14px rgba(255,59,48,0.6),
+        0 0 30px rgba(255,59,48,0.55),
+        0 20px 60px rgba(255,59,48,.4);
+    }
+    60% {
+      box-shadow:
+        0 0 0 4px #2a2a2a,
+        0 0 0 7px #1a1a1a,
+        0 0 0 9px #333,
+        0 20px 60px rgba(0,0,0,.6);
+    }
+  }
+
+  /* Anxious — slow yellow border marquee */
+  .watch.emotion-anxious {
+    animation: borderFlashYellow 1.2s ease-in-out infinite;
+  }
+  @keyframes borderFlashYellow {
+    0%, 100% {
+      box-shadow:
+        0 0 0 4px #2a2a2a,
+        0 0 0 7px #1a1a1a,
+        0 0 0 9px #333,
+        0 20px 60px rgba(0,0,0,.6);
+    }
+    40% {
+      box-shadow:
+        0 0 0 4px #FFCC00,
+        0 0 0 7px #FFCC00,
+        0 0 0 9px #FFCC00,
+        0 0 0 14px rgba(255,204,0,0.5),
+        0 0 25px rgba(255,204,0,0.45),
+        0 20px 60px rgba(255,204,0,.3);
+    }
+    70% {
+      box-shadow:
+        0 0 0 4px #2a2a2a,
+        0 0 0 7px #1a1a1a,
+        0 0 0 9px #333,
+        0 20px 60px rgba(0,0,0,.6);
+    }
+  }
+
+  /* ═══════════════════════════════════
+     STATUS BAR
+     ═══════════════════════════════════ */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 4px 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .status-bar .time {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+  .status-right { display: flex; align-items: center; gap: 6px; }
+  .conn-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 4px var(--green);
+    animation: connPulse 2s ease-in-out infinite;
+  }
+  @keyframes connPulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+  .battery { display: flex; align-items: center; gap: 2px; font-size: 9px; color: var(--sub); }
+  .battery-icon {
+    width: 18px; height: 9px; border: 1.2px solid var(--sub);
+    border-radius: 2px; padding: 1.5px; display: flex; position: relative;
+  }
+  .battery-icon::after {
+    content: ''; position: absolute; right: -3px; top: 50%;
+    transform: translateY(-50%); width: 2px; height: 4px;
+    background: var(--sub); border-radius: 1px;
+  }
+  .battery-fill {
+    height: 100%; background: var(--green); border-radius: 1px; width: 75%;
+    transition: background 0.5s;
+  }
+
+  /* ═══════════════════════════════════
+     EMOTION RING
+     ═══════════════════════════════════ */
+  .emotion-section {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0 0 2px; position: relative; z-index: 2;
+  }
+  .emotion-ring {
+    width: 95px; height: 95px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: visible;
+    transition: background 0.8s cubic-bezier(0.4,0,0.2,1),
+                box-shadow 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .emotion-ring::before {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%;
+    border: 2.5px solid currentColor; opacity: 0.5;
+    animation: ringBreathe 2s ease-in-out infinite;
+    transition: border-color 0.8s;
+  }
+  .emotion-ring::after {
+    content: ''; position: absolute; inset: -10px; border-radius: 50%;
+    border: 1.5px solid currentColor; opacity: 0.25;
+    animation: ringBreathe 2s ease-in-out 0.3s infinite;
+    transition: border-color 0.8s;
+  }
+  @keyframes ringBreathe {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.06); opacity: 0.2; }
+  }
+  .emotion-label {
+    font-size: 10px; font-weight: 600; color: #fff;
+    letter-spacing: 1px; margin-top: 5px; position: relative; z-index: 2;
+  }
+
+  /* ═══════════════════════════════════
+     CSS DOG FACE
+     ═══════════════════════════════════ */
+  .dog-container {
+    width: 70px; height: 70px; position: relative; z-index: 1;
+  }
+
+  /* -- ears -- */
+  .dog-ear {
+    position: absolute;
+    width: 22px; height: 30px;
+    background: #C8944A;
+    border-radius: 50% 50% 30% 30%;
+    top: -4px; z-index: 0;
+    transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+    transform-origin: bottom center;
+  }
+  .ear-left  { left: 6px;  transform: rotate(-15deg); }
+  .ear-right { right: 6px; transform: rotate(15deg); }
+  .dog-ear::after {
+    content: ''; position: absolute; inset: 4px 3px 6px 3px;
+    background: #DEAA6A; border-radius: 50% 50% 30% 30%;
+  }
+
+  /* calm ears — relaxed droop */
+  .dog-calm  .ear-left  { transform: rotate(-18deg) scaleY(0.9); }
+  .dog-calm  .ear-right { transform: rotate(18deg) scaleY(0.9); }
+
+  /* happy ears — perked up */
+  .dog-happy .ear-left  { transform: rotate(-25deg) scaleY(1.08); top: -8px; }
+  .dog-happy .ear-right { transform: rotate(25deg) scaleY(1.08); top: -8px; }
+
+  /* anxious ears — flattened sideways */
+  .dog-anxious .ear-left  { transform: rotate(-42deg) scaleY(0.65); top: 2px; }
+  .dog-anxious .ear-right { transform: rotate(42deg) scaleY(0.65); top: 2px; }
+
+  /* angry ears — pinned back */
+  .dog-angry .ear-left  { transform: rotate(-52deg) scaleY(0.5); top: 4px; left: 4px; }
+  .dog-angry .ear-right { transform: rotate(52deg) scaleY(0.5); top: 4px; right: 4px; }
+
+  /* -- face -- */
+  .dog-face {
+    position: absolute;
+    width: 56px; height: 50px;
+    background: #E8B87A;
+    border-radius: 50%;
+    top: 14px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: all 0.5s;
+  }
+  .dog-face::before {
+    content: ''; position: absolute;
+    width: 32px; height: 24px;
+    background: #F5D4A8;
+    border-radius: 50%;
+    bottom: 2px; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* -- eyes -- */
+  .dog-eye {
+    position: absolute;
+    width: 10px; height: 12px;
+    background: #fff; border-radius: 50%;
+    top: 16px; z-index: 3;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .eye-left  { left: 13px; }
+  .eye-right { right: 13px; }
+  .dog-eye .pupil {
+    position: absolute;
+    width: 6px; height: 7px;
+    background: #1a1a1a; border-radius: 50%;
+    bottom: 2px; left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s;
+  }
+  .dog-eye .shine {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #fff; border-radius: 50%;
+    top: 2px; right: 1px;
+  }
+
+  /* happy eyes — squinty */
+  .dog-happy .dog-eye {
+    height: 8px; clip-path: ellipse(5px 4px at 5px 6px);
+  }
+  .dog-happy .dog-eye .pupil { width: 4px; height: 4px; }
+
+  /* anxious eyes — wide, big pupils */
+  .dog-anxious .dog-eye {
+    width: 11px; height: 13px;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(255,204,0,0.3);
+  }
+  .dog-anxious .dog-eye .pupil { width: 8px; height: 9px; }
+
+  /* angry eyes — reddish, small pupils */
+  .dog-angry .dog-eye {
+    background: #FFE8E8;
+    box-shadow: 0 0 3px rgba(255,59,48,0.4);
+  }
+  .dog-angry .dog-eye .pupil { width: 4px; height: 5px; }
+
+  /* -- eyebrows -- */
+  .dog-brow {
+    position: absolute;
+    width: 14px; height: 3px;
+    top: 12px; z-index: 4;
+    transition: all 0.5s;
+  }
+  .brow-left  { left: 10px; }
+  .brow-right { right: 10px; }
+
+  .dog-calm .dog-brow {
+    background: #A0724A; border-radius: 0 0 40% 40%; height: 2.5px;
+  }
+  .dog-happy .dog-brow {
+    background: #A0724A; border-radius: 50%; height: 3px; top: 9px;
+  }
+  .dog-anxious .dog-brow {
+    background: #A0724A; border-radius: 50%; height: 3px; top: 10px;
+  }
+  .dog-anxious .brow-left  { transform: rotate(-14deg); }
+  .dog-anxious .brow-right { transform: rotate(14deg); }
+
+  .dog-angry .dog-brow {
+    background: #5C3A1E; border-radius: 0; height: 3px; top: 11px; width: 16px;
+  }
+  .dog-angry .brow-left  { transform: rotate(-20deg); left: 8px; }
+  .dog-angry .brow-right { transform: rotate(20deg); right: 8px; }
+
+  /* -- nose -- */
+  .dog-nose {
+    position: absolute;
+    width: 12px; height: 9px;
+    background: #2a1a0a;
+    border-radius: 50% 50% 45% 45%;
+    top: 26px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; transition: all 0.5s;
+  }
+  .dog-nose::after {
+    content: ''; position: absolute;
+    width: 4px; height: 2px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    top: 2px; left: 3px;
+  }
+
+  /* -- mouth -- */
+  .dog-mouth {
+    position: absolute; z-index: 3; transition: all 0.5s;
+  }
+
+  /* calm — gentle smile */
+  .dog-calm .dog-mouth {
+    width: 16px; height: 8px;
+    border-bottom: 2.5px solid #5C3A1E;
+    border-radius: 0 0 50% 50%;
+    top: 33px; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* happy — wide smile with wagging tongue */
+  .dog-happy .dog-mouth {
+    width: 22px; height: 14px;
+    background: #5C3A1E;
+    border-radius: 0 0 50% 50%;
+    top: 33px; left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+  .dog-happy .dog-mouth::after {
+    content: ''; position: absolute;
+    width: 14px; height: 8px;
+    background: #FF6B8A;
+    border-radius: 0 0 50% 50%;
+    bottom: 0; left: 50%;
+    animation: tongueWag 0.6s ease-in-out infinite;
+  }
+  @keyframes tongueWag {
+    0%, 100% { transform: translateX(-50%) scaleX(1); }
+    25% { transform: translateX(-40%) scaleX(1.12); }
+    75% { transform: translateX(-60%) scaleX(1.12); }
+  }
+
+  /* anxious — wavy mouth */
+  .dog-anxious .dog-mouth {
+    width: 18px; height: 10px;
+    border-bottom: 2.5px solid #5C3A1E;
+    border-radius: 0 0 30% 30%;
+    top: 33px; left: 50%;
+    transform: translateX(-50%) rotate(3deg);
+    animation: wavyMouth 0.8s ease-in-out infinite;
+  }
+  @keyframes wavyMouth {
+    0%, 100% { border-radius: 0 0 30% 30%; }
+    50% { border-radius: 0 0 50% 50%; transform: translateX(-50%) rotate(-3deg); }
+  }
+
+  /* angry — snarl showing teeth */
+  .dog-angry .dog-mouth {
+    width: 20px; height: 11px;
+    background: #3a1a0a;
+    border-radius: 0 0 40% 40%;
+    top: 32px; left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 3px 0 #fff;
+    animation: angrySnarl 0.5s ease-in-out infinite;
+  }
+  @keyframes angrySnarl {
+    0%, 100% { height: 11px; }
+    50% { height: 8px; }
+  }
+
+  /* ═══════════════════════════════════
+     PET NAME
+     ═══════════════════════════════════ */
+  .pet-name {
+    text-align: center; font-size: 12px; font-weight: 500;
+    color: var(--text); margin-top: 2px; letter-spacing: 0.5px;
+    position: relative; z-index: 2;
+  }
+
+  /* ═══════════════════════════════════
+     HEALTH CARDS
+     ═══════════════════════════════════ */
+  .health-row {
+    display: flex; gap: 6px; padding: 6px 0; position: relative; z-index: 2;
+  }
+  .health-card {
+    flex: 1; background: var(--card); border-radius: 12px;
+    padding: 7px 4px 5px; text-align: center; transition: background 0.3s;
+  }
+  .health-card .icon  { font-size: 13px; margin-bottom: 1px; }
+  .health-card .value { font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
+  .health-card .unit  { font-size: 7px; color: var(--sub); font-weight: 400; }
+  .health-card .tag   { font-size: 7px; color: var(--sub); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* ═══════════════════════════════════
+     LOCATION
+     ═══════════════════════════════════ */
+  .location-row {
+    background: var(--card); border-radius: 12px; padding: 7px 10px;
+    display: flex; align-items: center; gap: 8px; position: relative; z-index: 2;
+  }
+  .location-row .pin { font-size: 15px; }
+  .location-info { flex: 1; min-width: 0; }
+  .location-info .dist    { font-size: 11px; font-weight: 600; color: var(--text); }
+  .location-info .addr    { font-size: 8px; color: var(--sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .location-info .updated { font-size: 7px; color: var(--sub); opacity: 0.7; }
+  .location-row .arrow { font-size: 12px; color: var(--sub); }
+
+  /* ═══════════════════════════════════
+     HISTORY DOTS
+     ═══════════════════════════════════ */
+  .history {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 2px 0; position: relative; z-index: 2;
+  }
+  .history .h-label { font-size: 8px; color: var(--sub); letter-spacing: 0.5px; white-space: nowrap; }
+  .history .dots { display: flex; gap: 5px; flex: 1; justify-content: flex-end; }
+  .history .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--card);
+    transition: background 0.5s, transform 0.3s;
+  }
+  .history .dot.latest { transform: scale(1.4); box-shadow: 0 0 6px currentColor; }
+
+  /* ═══════════════════════════════════
+     FLASH OVERLAY
+     ═══════════════════════════════════ */
+  .flash-overlay {
+    position: absolute; inset: 0; border-radius: 44px;
+    pointer-events: none; opacity: 0; transition: opacity 0.15s;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="watch emotion-calm" id="watch">
+  <div class="flash-overlay" id="flashOverlay"></div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span class="time" id="timeLabel">10:42</span>
+    <div class="status-right">
+      <div class="conn-dot" id="connDot" title="已连接"></div>
+      <div class="battery">
+        <div class="battery-icon"><div class="battery-fill" id="batteryFill" style="width:75%"></div></div>
+        <span id="batteryPct">75%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emotion Ring + CSS Dog -->
+  <div class="emotion-section">
+    <div class="emotion-ring" id="emotionRing" style="background: var(--blue); color: var(--blue);">
+      <div class="dog-container dog-calm" id="dogContainer">
+        <div class="dog-ear ear-left"></div>
+        <div class="dog-ear ear-right"></div>
+        <div class="dog-face">
+          <div class="dog-brow brow-left"></div>
+          <div class="dog-brow brow-right"></div>
+          <div class="dog-eye eye-left">
+            <div class="pupil"></div>
+            <div class="shine"></div>
+          </div>
+          <div class="dog-eye eye-right">
+            <div class="pupil"></div>
+            <div class="shine"></div>
+          </div>
+          <div class="dog-nose"></div>
+          <div class="dog-mouth"></div>
+        </div>
+      </div>
+    </div>
+    <div class="emotion-label" id="emotionLabel">安 静</div>
+    <div class="pet-name" id="petName">🐕 旺财 · <span style="font-size:9px;color:var(--sub)">正在休息</span></div>
+  </div>
+
+  <!-- Health Cards -->
+  <div class="health-row">
+    <div class="health-card">
+      <div class="icon">💓</div>
+      <div class="value"><span id="hrValue">65</span><span class="unit"> BPM</span></div>
+      <div class="tag">心率</div>
+    </div>
+    <div class="health-card">
+      <div class="icon">🌡️</div>
+      <div class="value"><span id="tempValue">38.2</span><span class="unit">°C</span></div>
+      <div class="tag">体温</div>
+    </div>
+    <div class="health-card">
+      <div class="icon">🏃</div>
+      <div class="value"><span id="actValue">120</span><span class="unit"> 步/时</span></div>
+      <div class="tag">活动</div>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div class="location-row">
+    <span class="pin">📍</span>
+    <div class="location-info">
+      <div class="dist"><span id="distValue">5</span>m · 家中</div>
+      <div class="addr" id="addrValue">上海市徐汇区衡山路 128 号</div>
+      <div class="updated">更新于 <span id="locUpdated">2 秒前</span></div>
+    </div>
+    <span class="arrow">›</span>
+  </div>
+
+  <!-- History Dots -->
+  <div class="history">
+    <span class="h-label">情绪趋势</span>
+    <div class="dots" id="historyDots">
+      <span class="dot" style="background:var(--green)"></span>
+      <span class="dot" style="background:var(--green)"></span>
+      <span class="dot" style="background:var(--blue)"></span>
+      <span class="dot" style="background:var(--yellow)"></span>
+      <span class="dot" style="background:var(--yellow)"></span>
+      <span class="dot latest" style="background:var(--blue)"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+//  PetPulse — Sensor Simulation Engine
+// ═══════════════════════════════════════
+
+const EMOTION_CLASSES = {
+  calm:    'dog-calm',
+  happy:   'dog-happy',
+  anxious: 'dog-anxious',
+  angry:   'dog-angry',
+};
+
+const WATCH_CLASSES = {
+  calm:    'emotion-calm',
+  happy:   'emotion-happy',
+  anxious: 'emotion-anxious',
+  angry:   'emotion-angry',
+};
+
+const EMOTIONS = {
+  angry:   { label: '暴 躁', color: '#FF3B30', hr: [140,160], temp: [39.3,39.7], act: [30,60],   dist: [18,25], loc: '户外 · 公园附近',   petState: '发现其他动物' },
+  calm:    { label: '安 静', color: '#007AFF', hr: [60,72],   temp: [38.0,38.4], act: [80,150],  dist: [3,8],    loc: '家中 · 客厅',         petState: '正在休息' },
+  happy:   { label: '开 心', color: '#34C759', hr: [88,108],  temp: [38.5,38.9], act: [400,700], dist: [8,15],   loc: '户外 · 附近步道',     petState: '散步玩耍中' },
+  anxious: { label: '焦 虑', color: '#FFCC00', hr: [115,135], temp: [38.9,39.2], act: [200,350], dist: [5,12],   loc: '家中 · 窗边',         petState: '听到噪音' },
+};
+
+const SCENARIO_QUEUE = [
+  ['calm',    8],
+  ['happy',   8],
+  ['anxious', 8],
+  ['angry',   8],
+  ['anxious', 6],
+  ['calm',   10],
+  ['happy',   8],
+  ['calm',   10],
+];
+
+let queueIndex = 0;
+let scenarioStart = Date.now();
+let scenarioDuration = SCENARIO_QUEUE[0][1] * 1000;
+let secondsSinceUpdate = 2;
+let history = ['green','green','blue','yellow','yellow','blue'];
+
+// ─── helpers ───
+function rand(min, max)  { return Math.round((min + Math.random()*(max-min))*10)/10; }
+function randInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
+
+// ─── DOM refs ───
+const $watch        = document.getElementById('watch');
+const $time         = document.getElementById('timeLabel');
+const $batteryFill  = document.getElementById('batteryFill');
+const $batteryPct   = document.getElementById('batteryPct');
+const $emotionRing  = document.getElementById('emotionRing');
+const $emotionLabel = document.getElementById('emotionLabel');
+const $petName      = document.getElementById('petName');
+const $dogContainer = document.getElementById('dogContainer');
+const $hrValue      = document.getElementById('hrValue');
+const $tempValue    = document.getElementById('tempValue');
+const $actValue     = document.getElementById('actValue');
+const $distValue    = document.getElementById('distValue');
+const $addrValue    = document.getElementById('addrValue');
+const $locUpdated   = document.getElementById('locUpdated');
+const $historyDots  = document.getElementById('historyDots');
+const $flashOverlay = document.getElementById('flashOverlay');
+
+const COLOR_MAP = {
+  red: '#FF3B30', blue: '#007AFF', green: '#34C759', yellow: '#FFCC00',
+};
+
+// ─── apply emotion ───
+function applyEmotion(key) {
+  const e = EMOTIONS[key];
+  if (!e) return;
+
+  // ① Watch-level emotion class → triggers screen effect
+  Object.values(WATCH_CLASSES).forEach(c => $watch.classList.remove(c));
+  $watch.classList.add(WATCH_CLASSES[key]);
+
+  // ② Dog expression class
+  Object.values(EMOTION_CLASSES).forEach(c => $dogContainer.classList.remove(c));
+  $dogContainer.classList.add(EMOTION_CLASSES[key]);
+
+  // ③ Emotion ring color
+  $emotionRing.style.background = e.color;
+  $emotionRing.style.color = e.color;
+  $emotionLabel.textContent = e.label;
+  $petName.innerHTML = '🐕 旺财 · <span style="font-size:9px;color:var(--sub)">' + e.petState + '</span>';
+
+  // ④ Health values
+  $hrValue.textContent   = randInt(e.hr[0], e.hr[1]);
+  $tempValue.textContent = rand(e.temp[0], e.temp[1]).toFixed(1);
+  $actValue.textContent  = randInt(e.act[0], e.act[1]);
+
+  // ⑤ Location
+  $distValue.textContent = randInt(e.dist[0], e.dist[1]);
+  $addrValue.textContent = e.loc;
+  secondsSinceUpdate = 0;
+
+  // ⑥ History dots
+  const colorKey = key.replace('angry','red').replace('calm','blue').replace('happy','green').replace('anxious','yellow');
+  if (history.length >= 6) history.shift();
+  history.push(colorKey);
+  renderHistoryDots();
+
+  // ⑦ Flash overlay
+  $flashOverlay.style.background = e.color;
+  $flashOverlay.style.opacity = '0.18';
+  setTimeout(() => { $flashOverlay.style.opacity = '0'; }, 200);
+}
+
+// ─── history dots ───
+function renderHistoryDots() {
+  $historyDots.innerHTML = history.map((c, i) => {
+    const isLatest = i === history.length - 1;
+    return '<span class="dot' + (isLatest ? ' latest' : '') + '" style="background:' + COLOR_MAP[c] + ';' + (isLatest ? 'color:' + COLOR_MAP[c] : '') + '"></span>';
+  }).join('');
+}
+
+// ─── micro-tick ───
+function microTick() {
+  secondsSinceUpdate = Math.min(secondsSinceUpdate + 1, 59);
+  $locUpdated.textContent = secondsSinceUpdate + ' 秒前';
+
+  const hr = parseInt($hrValue.textContent) + randInt(-3,3);
+  $hrValue.textContent = Math.max(40, Math.min(180, hr));
+
+  const t = parseFloat($tempValue.textContent) + rand(-0.1,0.1);
+  $tempValue.textContent = Math.max(37.5, Math.min(40.5, t)).toFixed(1);
+
+  const a = parseInt($actValue.textContent) + randInt(-20,20);
+  $actValue.textContent = Math.max(0, a);
+}
+
+// ─── scenario advance ───
+function advanceScenario() {
+  queueIndex = (queueIndex + 1) % SCENARIO_QUEUE.length;
+  const [key, dur] = SCENARIO_QUEUE[queueIndex];
+  scenarioDuration = dur * 1000;
+  scenarioStart = Date.now();
+  secondsSinceUpdate = 0;
+  applyEmotion(key);
+}
+
+// ─── clock ───
+function updateClock() {
+  const now = new Date();
+  $time.textContent = now.getHours().toString().padStart(2,'0') + ':' +
+                      now.getMinutes().toString().padStart(2,'0');
+
+  const bp = parseInt($batteryPct.textContent);
+  const newBp = Math.max(20, Math.min(100, bp + (Math.random() > 0.7 ? -1 : 0)));
+  $batteryPct.textContent = newBp + '%';
+  $batteryFill.style.width = newBp + '%';
+  if (newBp <= 20) $batteryFill.style.background = '#FF3B30';
+  else if (newBp <= 40) $batteryFill.style.background = '#FFCC00';
+  else $batteryFill.style.background = '#34C759';
+}
+
+function checkScenario() {
+  if (Date.now() - scenarioStart >= scenarioDuration) advanceScenario();
+}
+
+function loop() { updateClock(); checkScenario(); microTick(); }
+
+function init() {
+  updateClock();
+  applyEmotion(SCENARIO_QUEUE[0][0]);
+  renderHistoryDots();
+  loop();
+  setInterval(loop, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+<style id="cpaw-light-theme">
+  /* When the parent page asks for a light page background
+     via ?bg=light, hide the prototype's dark page chrome
+     and replace the watch's dark outer ring so the watch
+     sits cleanly inside the editorial system. */
+  body.cpaw-light { background: transparent !important; }
+  body.cpaw-light::before { background: transparent !important; }
+  body.cpaw-light .watch {
+    box-shadow:
+      0 0 0 4px #e7e8ea,
+      0 0 0 7px #f0f1f2,
+      0 0 0 9px #d6d8db,
+      0 30px 60px -20px rgba(0, 0, 0, 0.18) !important;
+  }
+</style>
+<script>
+  /* Opt-in light page background. We don't touch the watch
+     itself — the watch is the only thing the user actually
+     interacts with, and it should keep its dark UI. We only
+     remove the prototype's outer page colour so it sits
+     cleanly inside the editorial system. */
+  (function () {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('bg') === 'light') {
+        document.body.classList.add('cpaw-light');
+      }
+    } catch (e) { /* ignore */ }
+  })();
+</script>
+</body>
+</html>

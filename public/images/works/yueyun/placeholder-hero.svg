@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="hero :�`M�">
+  <defs>
+    <linearGradient id="yyh-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B1916"/>
+      <stop offset="100%" stop-color="#10100F"/>
+    </linearGradient>
+    <radialGradient id="yyh-glow" cx="55%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#C8A66A" stop-opacity="0.20"/>
+      <stop offset="60%" stop-color="#C8A66A" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#C8A66A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#yyh-bg)"/>
+  <rect width="1600" height="900" fill="url(#yyh-glow)"/>
+  <ellipse cx="900" cy="780" rx="600" ry="22" fill="#000" opacity="0.55"/>
+  <g fill="none" stroke="#C8A66A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.82">
+    <!-- single centered figure (H larger version of 01 wusheng) -->
+    <g transform="translate(800,180) scale(1.7)">
+      <path d="M70 30 q20 -20 40 0 q-2 18 -20 22 q-18 -4 -20 -22 z"/>
+      <path d="M70 56 q-2 6 4 10 l-4 50 l-18 80 l-2 30 l6 6 l4 -6 l4 6 l6 -8 l-2 -28 l12 -48 l12 48 l-2 28 l6 8 l4 -6 l4 6 l6 -6 l-2 -30 l-18 -80 l-4 -50 q6 -4 4 -10 z"/>
+    </g>
+  </g>
+  <g font-family="Inter, system-ui, sans-serif" fill="#A7A39B" font-size="10" letter-spacing="3" opacity="0.5">
+    <text x="48" y="60">HERO PLACEHOLDER</text>
+    <text x="48" y="868">I����;����b</text>
+  </g>
+</svg>

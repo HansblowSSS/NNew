@@ -1,0 +1,1045 @@
+/* ============================================================
+   Desktop Light Detail — Dark Editorial Product Page
+   ----------------------------------------------------------------
+   High-contrast dark product site feel, inspired by premium
+   consumer electronics launch pages.
+
+   Tokens:
+     --dl-bg       obsidian black      #0B0B0C
+     --dl-bg-2     charcoal            #141414
+     --dl-bg-3     soft dark           #1B1B1C
+     --dl-text     warm white          #F3F0E8
+     --dl-text-2   cool silver          #B7BBC2
+     --dl-text-3   dim silver           #6E7178
+     --dl-accent   amber warm          #E9A64B
+   ============================================================ */
+
+.dl-page {
+  /* Colours */
+  --dl-bg:       #0B0B0C;
+  --dl-bg-2:     #141414;
+  --dl-bg-3:     #1B1B1C;
+  --dl-bg-4:     #0E0E10;
+  --dl-text:     #F3F0E8;
+  --dl-text-2:   #B7BBC2;
+  --dl-text-3:   #6E7178;
+  --dl-text-4:   #3A3A3D;
+  --dl-accent:   #E9A64B;
+  --dl-accent-2: #C2833A;
+  --dl-line:     rgba(243, 240, 232, 0.08);
+  --dl-line-2:   rgba(243, 240, 232, 0.16);
+
+  /* Fonts */
+  --dl-font-en: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --dl-font-cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* Layout */
+  --dl-gutter:   clamp(20px, 4vw, 64px);
+  --dl-max:      1320px;
+
+  background: var(--dl-bg);
+  color: var(--dl-text);
+  font-family: var(--dl-font-cn);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Shared section tokens
+   ============================================================ */
+.dl-section-tag {
+  display: inline-block;
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.62rem, 0.85vw, 0.72rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dl-accent);
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+}
+
+.dl-section-title-cn {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  font-weight: 400;
+  color: var(--dl-text);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  margin-bottom: clamp(16px, 1.8vw, 22px);
+  max-width: 14ch;
+}
+
+.dl-section-title-cn--light {
+  color: var(--dl-text);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.dl-section-title-en {
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.65rem, 0.85vw, 0.74rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dl-text-3);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.dl-section-body {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+  line-height: 1.9;
+  color: var(--dl-text-2);
+  max-width: 440px;
+}
+
+.dl-section-body--light {
+  color: var(--dl-text-2);
+}
+
+.dl-section-body--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ============================================================
+   Top bar — Back link + project code
+   ============================================================ */
+.dl-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(20px, 3vw, 36px) var(--dl-gutter);
+}
+
+.dl-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--dl-font-en);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+.dl-back-link:hover {
+  color: var(--dl-accent);
+  gap: 14px;
+}
+
+.dl-topbar-meta {
+  font-family: var(--dl-font-en);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.32);
+}
+
+/* ============================================================
+   01 · HERO
+   ============================================================ */
+.dl-hero {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--dl-bg);
+  isolation: isolate;
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+
+.dl-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.dl-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.dl-hero-bg-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      95deg,
+      rgba(11, 11, 12, 0.78) 0%,
+      rgba(11, 11, 12, 0.5) 35%,
+      rgba(11, 11, 12, 0.25) 65%,
+      rgba(11, 11, 12, 0.4) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(11, 11, 12, 0.3) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(11, 11, 12, 0.9) 100%
+    );
+  pointer-events: none;
+}
+
+.dl-hero-text {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--dl-gutter);
+  max-width: 760px;
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.dl-hero-eyebrow {
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.62rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--dl-accent);
+  margin-bottom: clamp(18px, 2.2vw, 28px);
+}
+
+.dl-hero-title-wrap {
+  display: inline-block;
+}
+
+.dl-hero-title-cn {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(3rem, 8.5vw, 8.5rem);
+  font-weight: 400;
+  color: var(--dl-text);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: clamp(20px, 2.6vw, 32px);
+  transform-style: preserve-3d;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dl-hero-slogan-cn {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(1.05rem, 1.5vw, 1.32rem);
+  color: var(--dl-text);
+  line-height: 1.55;
+  max-width: 520px;
+  margin-bottom: clamp(8px, 1vw, 12px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.dl-hero-slogan-en {
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.42);
+}
+
+.dl-scroll-hint {
+  position: absolute;
+  bottom: clamp(20px, 2.6vw, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.dl-scroll-hint-line {
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, transparent, var(--dl-accent));
+  animation: dl-scroll-pulse 2.4s ease-in-out infinite;
+}
+
+.dl-scroll-hint-text {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dl-text-3);
+}
+
+@keyframes dl-scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50%      { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ============================================================
+   02 · DESIGN
+   ============================================================ */
+.dl-design {
+  position: relative;
+  background: var(--dl-bg);
+  padding: clamp(120px, 16vw, 200px) 0 clamp(120px, 16vw, 200px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dl-design-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--dl-font-en);
+  font-size: clamp(4rem, 13vw, 16vw);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: rgba(243, 240, 232, 0.035);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.dl-design-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--dl-max);
+  margin: 0 auto;
+  padding: 0 var(--dl-gutter);
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
+}
+
+.dl-design-copy {
+  max-width: 420px;
+}
+
+.dl-design-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dl-design-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--dl-bg-2);
+  will-change: transform;
+}
+
+.dl-design-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.dl-design-frame:hover img {
+  transform: scale(1.03);
+}
+
+.dl-design-frame-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 70%,
+    rgba(11, 11, 12, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.dl-design-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.62rem, 0.85vw, 0.72rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dl-text-3);
+}
+
+.dl-design-caption-mark {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--dl-accent);
+}
+
+/* ============================================================
+   03 · INTERACTION
+   - Video background, full-bleed
+   - Text + state comparison overlays anchored left
+   ============================================================ */
+.dl-interaction {
+  position: relative;
+  background: var(--dl-bg-4);
+  padding: clamp(120px, 16vw, 180px) 0 clamp(140px, 18vw, 220px);
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.dl-interaction-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--dl-bg-4);
+}
+
+.dl-interaction-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* slow ambient zoom on scroll would be added via JS, kept static for performance */
+}
+
+.dl-interaction-video-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Stronger left-side gradient so the text sits on a calm, dim plate. */
+    linear-gradient(
+      90deg,
+      rgba(11, 11, 12, 0.92) 0%,
+      rgba(11, 11, 12, 0.78) 18%,
+      rgba(11, 11, 12, 0.42) 32%,
+      rgba(11, 11, 12, 0.12) 50%,
+      rgba(11, 11, 12, 0.0)  72%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(11, 11, 12, 0.3) 0%,
+      transparent 25%,
+      transparent 70%,
+      rgba(11, 11, 12, 0.6) 100%
+    );
+  pointer-events: none;
+}
+
+.dl-interaction-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--dl-max);
+  margin: 0 auto;
+  padding: 0 var(--dl-gutter);
+  width: 100%;
+}
+
+/* Interaction copy lives in the left 1/3 so it never crosses the product.
+   Anchored to the left third of the viewport with a hard max-width. */
+.dl-interaction-head {
+  max-width: min(360px, 30vw);
+  width: 100%;
+  margin-left: clamp(8px, 2vw, 32px);
+  margin-bottom: 0;
+}
+
+.dl-state {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dl-state--b {
+  margin-top: clamp(40px, 7vw, 100px);
+}
+
+.dl-state-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--dl-bg-2);
+  border: 1px solid var(--dl-line);
+  will-change: transform;
+}
+
+.dl-state--b .dl-state-frame {
+  aspect-ratio: 4 / 5;
+}
+
+.dl-state-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.dl-state-frame:hover img {
+  transform: scale(1.04);
+}
+
+.dl-state-frame-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(11, 11, 12, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+.dl-state-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dl-state-marker {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dl-accent);
+  box-shadow: 0 0 12px rgba(233, 166, 75, 0.6);
+  margin-right: 4px;
+  transform: translateY(-2px);
+}
+
+.dl-state-cn {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--dl-text);
+  letter-spacing: 0.02em;
+}
+
+.dl-state-en {
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.6rem, 0.78vw, 0.7rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dl-text-3);
+}
+
+.dl-state-desc {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(0.85rem, 0.95vw, 0.92rem);
+  color: var(--dl-text-2);
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+/* ============================================================
+   04 · DETAIL
+   ============================================================ */
+.dl-detail {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--dl-bg);
+  isolation: isolate;
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+
+.dl-detail-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.dl-detail-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.dl-detail-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(11, 11, 12, 0.85) 0%,
+    rgba(11, 11, 12, 0.45) 35%,
+    rgba(11, 11, 12, 0.1) 70%,
+    rgba(11, 11, 12, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.dl-detail-text {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--dl-gutter);
+  max-width: 520px;
+  margin-left: clamp(20px, 5vw, 80px);
+}
+
+/* Detail section: lines break at punctuation, never mid-word. */
+.dl-detail-text .dl-line {
+  display: block;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-align: left;
+}
+
+/* The detail title now reaches a wider column (multiple lines of
+   Chinese text) so unhook the global 14ch cap. */
+.dl-detail-title {
+  max-width: 12ch;
+}
+
+.dl-detail-body {
+  max-width: 100%;
+  text-align: left;
+}
+
+/* ============================================================
+   05 · STRUCTURE
+   - Full-bleed background image (产品透视线稿)
+   - Title + body anchored top-left so the product line art stays unobscured
+   ============================================================ */
+.dl-structure {
+  position: relative;
+  background: var(--dl-bg-2);
+  padding: clamp(120px, 16vw, 180px) 0;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Full-bleed product line-art background */
+.dl-structure-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.dl-structure-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* With the headline on the right, anchor the product to the left
+     so the lit subject and the headline don't fight for the same space. */
+  object-position: left center;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.dl-structure-bg:hover .dl-structure-bg-img {
+  transform: scale(1.02);
+}
+
+/* Soft vignette so the warm light breathes and the headline reads well.
+   The veil brightens the right side so the orange sketch doesn't
+   compete with the right-aligned copy; the left half of the product
+   sketch is left to glow through. */
+.dl-structure-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    /* 225deg: dark on top-right → fully transparent toward bottom-left.
+       Stronger right-side plate to host the right-aligned headline. */
+    linear-gradient(
+      225deg,
+      rgba(11, 11, 12, 0.0)  0%,
+      rgba(11, 11, 12, 0.0)  30%,
+      rgba(11, 11, 12, 0.6)  65%,
+      rgba(11, 11, 12, 0.92) 100%
+    ),
+    /* Bottom dim for the meta line. */
+    linear-gradient(
+      to bottom,
+      rgba(11, 11, 12, 0.35) 0%,
+      transparent 28%,
+      transparent 72%,
+      rgba(11, 11, 12, 0.7) 100%
+    );
+  pointer-events: none;
+}
+
+/* Top-right head: tag → cn title → en title → body.
+   The copy block sits in the right half of the canvas, slightly right
+   of the vertical centre (so it reads as a right-leaning column, not
+   a flush-right plate). Inside, every line is right-aligned. */
+.dl-structure-head {
+  position: relative;
+  z-index: 2;
+  /* Width is fixed; left edge sits in the right half of the section. */
+  width: min(420px, 40vw);
+  /* Anchor the block just past the vertical centre line. */
+  margin-left: 50%;
+  margin-right: 0;
+  /* Push the block a little further right, away from centre. */
+  transform: translateX(clamp(40px, 6vw, 96px));
+  padding: clamp(20px, 3vw, 36px) 0;
+  align-self: flex-start;
+  text-align: right;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+.dl-structure-title-cn,
+.dl-structure-title-en,
+.dl-structure-body {
+  text-align: right;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  width: auto;
+}
+
+/* Inner h2 / p / span must fill the column so right-alignment actually
+   pins each line to the right edge of the head block. */
+.dl-structure-title-cn {
+  width: 100%;
+}
+
+/* Every "line" is forced onto its own row, right-aligned. */
+.dl-structure-head .dl-line {
+  display: block;
+  text-align: right;
+  /* Hard guarantee: never break inside a line, even on narrow screens. */
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* Meta line floats at the bottom of the section. */
+.dl-structure-meta {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: clamp(20px, 3vw, 36px);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.55);
+  padding: 0 var(--dl-gutter);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   06 · CLOSING
+   ============================================================ */
+.dl-closing {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--dl-bg);
+  isolation: isolate;
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+
+.dl-closing-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.dl-closing-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.dl-closing-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(11, 11, 12, 0.55) 0%,
+      rgba(11, 11, 12, 0.35) 50%,
+      rgba(11, 11, 12, 0.85) 100%
+    );
+  pointer-events: none;
+}
+
+.dl-closing-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--dl-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dl-closing-en {
+  font-family: var(--dl-font-en);
+  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--dl-accent);
+  margin-bottom: clamp(18px, 2vw, 24px);
+}
+
+.dl-closing-cn {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
+  font-weight: 300;
+  color: var(--dl-text);
+  letter-spacing: 0.04em;
+  line-height: 1.18;
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dl-closing-sub {
+  font-family: var(--dl-font-cn);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  color: rgba(243, 240, 232, 0.75);
+  margin-bottom: clamp(40px, 5vw, 64px);
+  max-width: 480px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.dl-closing-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--dl-font-en);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dl-text);
+  border: 1px solid var(--dl-line-2);
+  padding: 16px 32px;
+  text-decoration: none;
+  background: rgba(11, 11, 12, 0.4);
+  backdrop-filter: blur(6px);
+  transition: all 0.4s ease;
+}
+.dl-closing-link:hover {
+  background: var(--dl-accent);
+  color: var(--dl-bg);
+  border-color: var(--dl-accent);
+}
+
+.dl-closing-foot {
+  position: absolute;
+  bottom: clamp(20px, 3vw, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  font-family: var(--dl-font-en);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.35);
+}
+
+/* ============================================================
+   Section Nav (right side dots)
+   ============================================================ */
+.dl-sectionnav {
+  position: fixed;
+  top: 50%;
+  right: clamp(20px, 2.6vw, 32px);
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  pointer-events: auto;
+}
+
+.dl-sectionnav-dot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--dl-text-3);
+  font-family: var(--dl-font-en);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  flex-direction: row-reverse;
+  transition: color 0.3s ease;
+}
+
+.dl-sectionnav-dot:hover {
+  color: var(--dl-text);
+}
+
+.dl-sectionnav-line {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--dl-text-4);
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.dl-sectionnav-dot.is-active {
+  color: var(--dl-accent);
+}
+
+.dl-sectionnav-dot.is-active .dl-sectionnav-line {
+  width: 44px;
+  background: var(--dl-accent);
+}
+
+.dl-sectionnav-label {
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dl-sectionnav-dot:hover .dl-sectionnav-label,
+.dl-sectionnav-dot.is-active .dl-sectionnav-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   Responsive — Tablet (≤ 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .dl-design-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 80px);
+  }
+
+  .dl-design-copy {
+    max-width: 100%;
+  }
+
+  .dl-design-frame {
+    aspect-ratio: 16 / 11;
+  }
+
+  .dl-interaction-head {
+    max-width: 100%;
+  }
+
+  .dl-state--b {
+    margin-top: clamp(20px, 4vw, 60px);
+  }
+
+  .dl-sectionnav {
+    display: none;
+  }
+
+  .dl-structure {
+    min-height: 80svh;
+  }
+
+  .dl-structure-head {
+    max-width: min(420px, 70vw);
+  }
+
+  .dl-structure-bg-img {
+    object-position: center;
+  }
+}
+
+/* ============================================================
+   Responsive — Mobile (≤ 640px)
+   ============================================================ */
+@media (max-width: 640px) {
+  .dl-topbar {
+    padding: 16px 20px;
+  }
+
+  .dl-topbar-meta {
+    display: none;
+  }
+
+  .dl-hero {
+    min-height: 90svh;
+  }
+
+  .dl-hero-title-cn {
+    font-size: clamp(2.4rem, 12vw, 3.6rem);
+  }
+
+  .dl-design-inner,
+  .dl-interaction-inner {
+    padding: 0 20px;
+  }
+
+  .dl-interaction-head {
+    max-width: 80vw;
+  }
+
+  .dl-state--b {
+    margin-top: 0;
+  }
+
+  .dl-state-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .dl-state--b .dl-state-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .dl-closing-cn {
+    font-size: clamp(1.8rem, 9vw, 2.6rem);
+  }
+
+  .dl-closing-foot {
+    font-size: 9px;
+    gap: 8px;
+  }
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .dl-scroll-hint-line {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .dl-design-frame,
+  .dl-state-frame,
+  .dl-detail-bg,
+  .dl-closing-bg,
+  .dl-design-wordmark,
+  .dl-structure-bg {
+    will-change: auto;
+  }
+
+  .dl-state-frame img,
+  .dl-design-frame img,
+  .dl-structure-bg-img {
+    transition: none;
+  }
+}

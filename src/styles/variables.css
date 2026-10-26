@@ -1,0 +1,85 @@
+/* ============================================
+   LI TIANLE — PORTFOLIO
+   Design Tokens · Light Editorial
+   ============================================ */
+
+:root {
+  /* ---------- Color: Background (Paper) ---------- */
+  --bg: #F5F5F2;
+  --bg-soft: #F7F7F5;
+  --surface: #FFFFFF;
+  --surface-soft: #EEEEE9;
+
+  /* ---------- Color: Text (Ink) ---------- */
+  --text: #111111;          /* primary ink */
+  --text-secondary: #6F7075; /* muted body */
+  --text-muted: #9A9B9F;     /* labels / meta */
+
+  /* ---------- Color: Brand (Klein Blue) — accent only ---------- */
+  --klein-blue: #002FA7;
+  --blue-bright: #2457FF;   /* literal Klein Blue per spec */
+  --blue-glow: rgba(36, 87, 255, 0.10);
+
+  /* ---------- Lines (very subtle) ---------- */
+  --line: rgba(17, 17, 17, 0.10);
+  --line-strong: rgba(17, 17, 17, 0.18);
+
+  /* ---------- Typography ---------- */
+  --font-en: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Type scale — editorial, restrained (no 200px headlines) */
+  --fs-display: clamp(3.6rem, 6.4vw, 6rem);
+  --fs-hero: clamp(2.8rem, 5vw, 5rem);
+  --fs-h1: clamp(2.4rem, 4vw, 4.2rem);
+  --fs-h2: clamp(1.6rem, 2.4vw, 2.6rem);
+  --fs-h3: clamp(1.2rem, 1.6vw, 1.6rem);
+  --fs-h4: clamp(1.05rem, 1.3vw, 1.25rem);
+  --fs-body: clamp(0.95rem, 1.05vw, 1.05rem);
+  --fs-small: clamp(0.82rem, 0.92vw, 0.92rem);
+  --fs-micro: clamp(0.7rem, 0.78vw, 0.78rem);
+
+  /* Letter spacing */
+  --tracking-wide: 0.16em;
+  --tracking-wider: 0.24em;
+  --tracking-widest: 0.36em;
+  --tracking-tight: -0.01em;
+  --tracking-tighter: -0.02em;
+
+  /* ---------- Spacing & Layout (generous) ---------- */
+  --gutter: clamp(1.5rem, 4vw, 4rem);
+  --section-y: clamp(6rem, 11vw, 11rem);
+  --max-w: 1320px;
+  --nav-h: 60px;
+
+  /* ---------- Motion (slower, editorial) ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --d-fast: 0.3s;
+  --d-base: 0.55s;
+  --d-slow: 0.9s;
+
+  /* ---------- Radius (restrained) ---------- */
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* ---------- Z Index ---------- */
+  --z-cursor: 9999;
+  --z-nav: 200;
+  --z-overlay: 90;
+  --z-base: 1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-fast: 0s;
+    --d-base: 0s;
+    --d-slow: 0s;
+  }
+}

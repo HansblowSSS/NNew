@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="ph3-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4ECDF"/>
+      <stop offset="100%" stop-color="#E8DCC8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#ph3-bg)"/>
+
+  <!-- Four color variants row -->
+  <g transform="translate(80, 200)">
+    <g>
+      <rect x="0" y="0" width="100" height="100" rx="14" fill="#F8F2E5" stroke="#D4C5AE" stroke-width="1.5"/>
+      <rect x="10" y="10" width="80" height="80" rx="8" fill="#3A3530"/>
+      <circle cx="50" cy="46" r="12" fill="#E8DCC8"/>
+      <rect x="-3" y="103" width="106" height="5" rx="2.5" fill="#C78C59" opacity="0.4"/>
+      <text x="50" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#756B5E" letter-spacing="2">CREAM</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="100" height="100" rx="14" fill="#D9C9B0" stroke="#A8967A" stroke-width="1.5"/>
+      <rect x="10" y="10" width="80" height="80" rx="8" fill="#2A2620"/>
+      <circle cx="50" cy="46" r="12" fill="#E8DCC8"/>
+      <rect x="-3" y="103" width="106" height="5" rx="2.5" fill="#A9B59A" opacity="0.5"/>
+      <text x="50" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#756B5E" letter-spacing="2">SAGE</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="100" height="100" rx="14" fill="#3A3530" stroke="#1A1714" stroke-width="1.5"/>
+      <rect x="10" y="10" width="80" height="80" rx="8" fill="#1A1714"/>
+      <circle cx="50" cy="46" r="12" fill="#C78C59"/>
+      <rect x="-3" y="103" width="106" height="5" rx="2.5" fill="#C78C59" opacity="0.7"/>
+      <text x="50" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#756B5E" letter-spacing="2">INK</text>
+    </g>
+    <g transform="translate(450, 0)">
+      <rect x="0" y="0" width="100" height="100" rx="14" fill="#E8DCC8" stroke="#A8967A" stroke-width="1.5"/>
+      <rect x="10" y="10" width="80" height="80" rx="8" fill="#302C26"/>
+      <circle cx="50" cy="46" r="12" fill="#A9B59A"/>
+      <rect x="-3" y="103" width="106" height="5" rx="2.5" fill="#A9B59A" opacity="0.6"/>
+      <text x="50" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#756B5E" letter-spacing="2">SAND</text>
+    </g>
+  </g>
+
+  <!-- Marker -->
+  <g transform="translate(540, 40)" opacity="0.5">
+    <rect x="-50" y="-10" width="100" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FDFAF4" letter-spacing="2">PLACEHOLDER</text>
+  </g>
+
+  <text x="300" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#756B5E" letter-spacing="3">COLOR COLLECTION</text>
+</svg>

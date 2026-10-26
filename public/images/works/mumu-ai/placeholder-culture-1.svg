@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="cu-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4ECDF"/>
+      <stop offset="100%" stop-color="#E8DCC8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#cu-bg)"/>
+
+  <!-- Mudiao: wood carving pattern -->
+  <g transform="translate(200, 200)">
+    <!-- Central wood carving motif -->
+    <g stroke="#756B5E" stroke-width="1.5" fill="none">
+      <circle cx="0" cy="0" r="80"/>
+      <circle cx="0" cy="0" r="60"/>
+      <circle cx="0" cy="0" r="40"/>
+    </g>
+    <g stroke="#C78C59" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M -80 0 Q -50 -30 0 -30 Q 50 -30 80 0 Q 50 30 0 30 Q -50 30 -80 0 Z"/>
+      <path d="M -60 0 L -40 0"/>
+      <path d="M 40 0 L 60 0"/>
+    </g>
+    <!-- Knife-carved texture lines -->
+    <g stroke="#A8967A" stroke-width="0.5" opacity="0.6">
+      <line x1="-70" y1="-20" x2="-50" y2="-20"/>
+      <line x1="-70" y1="20" x2="-50" y2="20"/>
+      <line x1="50" y1="-20" x2="70" y2="-20"/>
+      <line x1="50" y1="20" x2="70" y2="20"/>
+      <line x1="-20" y1="-70" x2="-20" y2="-50"/>
+      <line x1="20" y1="-70" x2="20" y2="-50"/>
+      <line x1="-20" y1="50" x2="-20" y2="70"/>
+      <line x1="20" y1="50" x2="20" y2="70"/>
+    </g>
+    <!-- Center character placeholder -->
+    <circle cx="0" cy="0" r="25" fill="#C78C59" opacity="0.4"/>
+    <text x="0" y="5" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="14" font-weight="600" fill="#302C26">�</text>
+  </g>
+
+  <g transform="translate(360, 30)" opacity="0.5">
+    <rect x="-40" y="-10" width="80" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#FDFAF4" letter-spacing="2">PH</text>
+  </g>
+</svg>

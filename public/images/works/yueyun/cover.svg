@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14161D"/>
+      <stop offset="100%" stop-color="#08090C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="96" fill="#F4F5F7" letter-spacing="-2">PROJECT 05</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-weight="500" font-size="40" fill="#A5A8B0">§ı≥N Ú“á</text>
+  <text x="50%" y="62%" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="22" fill="#686B74" letter-spacing="4">CULTURAL CREATIVE / IP</text>
+  <text x="50%" y="92%" text-anchor="middle" font-family="sans-serif" font-weight="500" font-size="22" fill="#002FA7" letter-spacing="6">REPLACE WITH cover.webp</text>
+</svg>

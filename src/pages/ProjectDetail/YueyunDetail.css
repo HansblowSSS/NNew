@@ -1,0 +1,945 @@
+/* ============================================================
+   粤韵芳华 · Yueyun Detail
+   Dark Oriental Toy-Design Editorial
+   ----------------------------------------------------------------
+   Scoped under .yy-page so it does NOT leak into the rest of
+   the portfolio (which is light / Klein-Blue editorial).
+
+   LAYOUT MODEL
+   ----------------------------------------------------------------
+   A single content container governs the horizontal safe area
+   for every section (hero, culture, design, collection, series,
+   closing). Section heads, image grids, role rows, and phase
+   rails all live INSIDE the same container, so left/right edges
+   always share the same baseline — no more header-to-body drift.
+
+   Tokens (local):
+     --yy-gutter     safe horizontal padding (responsive)
+     --yy-container  max width of the content container
+     --yy-reading    comfortable Chinese reading width
+   ============================================================ */
+
+.yy-page {
+  /* Local design tokens */
+  --yy-bg:       #10100F;
+  --yy-bg-2:     #191817;
+  --yy-bg-3:     #232220;
+  --yy-text:     #F3F0E8;
+  --yy-text-2:   #A7A39B;
+  --yy-text-3:   #6E6C66;
+  --yy-gold:     #C8A66A;
+  --yy-gold-2:   #A8895A;
+  --yy-red:      #9D3935;
+  --yy-line:     rgba(243, 240, 232, 0.10);
+  --yy-line-2:   rgba(243, 240, 232, 0.20);
+
+  --yy-font-en: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --yy-font-cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* Safe area + container — fluid and predictable. */
+  --yy-gutter:    clamp(20px, 4vw, 64px);
+  --yy-container: min(100% - calc(var(--yy-gutter) * 2), 1320px);
+  --yy-reading:   60ch; /* ~36-60 Chinese chars at body size */
+
+  background: var(--yy-bg);
+  color: var(--yy-text);
+  font-family: var(--yy-font-cn);
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* Selection inherits the gold accent on dark canvas */
+.yy-page ::selection {
+  background: var(--yy-gold);
+  color: #10100F;
+}
+
+/* Section-number markers: keep their natural language lines,
+   never break in the middle of a short phrase. */
+.yy-page .yy-line {
+  display: block;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* ============================================================
+   UNIVERSAL CONTENT CONTAINER
+   Apply this to every section's outer wrapper so the left/right
+   baselines are consistent across the page.
+   ============================================================ */
+.yy-container {
+  width: var(--yy-container);
+  margin-inline: auto;
+}
+
+/* ============================================================
+   01 · HERO
+   ============================================================ */
+.yy-hero {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  padding: clamp(120px, 14vw, 180px) 0;
+  overflow: hidden;
+  background: var(--yy-bg);
+  isolation: isolate;
+}
+
+.yy-hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  z-index: 0;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.yy-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.yy-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Left 18% darkened to keep any text overlap readable. */
+    linear-gradient(90deg, rgba(16, 16, 15, 0.55) 0%, rgba(16, 16, 15, 0) 18%),
+    /* Right edge soft fade. */
+    linear-gradient(90deg, transparent 60%, rgba(16, 16, 15, 0.55) 100%),
+    /* Top + bottom fade to host nav and link. */
+    linear-gradient(180deg, rgba(16, 16, 15, 0.5) 0%, transparent 18%, transparent 80%, rgba(16, 16, 15, 0.6) 100%),
+    /* Global darken across the whole photo. */
+    rgba(16, 16, 15, 0.45);
+}
+
+.yy-hero-inner {
+  position: relative;
+  z-index: 2;
+  /* Use the shared container so the hero text and the rest of
+     the page start at the exact same left edge. */
+  width: var(--yy-container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.yy-tag {
+  display: inline-block;
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--yy-gold);
+  padding: 6px 0;
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+  border-top: 1px solid var(--yy-line-2);
+  padding-top: 14px;
+}
+
+.yy-hero-text { max-width: 56ch; }
+
+.yy-hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 14px);
+  margin-bottom: clamp(28px, 3vw, 44px);
+}
+
+.yy-hero-title-cn {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(3rem, 6.8vw, 5.4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: var(--yy-text);
+}
+
+.yy-hero-title-en {
+  font-family: var(--yy-font-en);
+  font-size: clamp(0.78rem, 1vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--yy-text-2);
+}
+
+.yy-hero-subtitle {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--yy-text);
+  margin-bottom: clamp(16px, 2vw, 26px);
+}
+
+.yy-hero-body {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.9;
+  color: var(--yy-text-2);
+  margin-bottom: clamp(28px, 3vw, 44px);
+}
+
+.yy-hero-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--yy-font-cn);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  color: var(--yy-text-2);
+}
+
+.yy-hero-keywords li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yy-hero-kw-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--yy-gold);
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Back link bottom-left */
+.yy-hero-back-wrap {
+  position: absolute;
+  left: var(--yy-gutter);
+  bottom: clamp(20px, 3vw, 40px);
+  z-index: 3;
+}
+
+.yy-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-text-2);
+  transition: color 0.3s var(--ease-out, ease);
+}
+.yy-back:hover { color: var(--yy-gold); }
+
+/* Scroll hint */
+.yy-hero-scroll-hint {
+  position: absolute;
+  right: var(--yy-gutter);
+  bottom: clamp(20px, 3vw, 40px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--yy-font-en);
+  font-size: 0.66rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--yy-text-3);
+}
+.yy-hero-scroll-line {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--yy-gold), transparent);
+}
+
+/* ============================================================
+   02 · CULTURE
+   ============================================================ */
+.yy-culture {
+  position: relative;
+  background: var(--yy-bg-2);
+  padding: clamp(110px, 14vw, 170px) 0;
+  overflow: hidden;
+}
+
+.yy-culture-inner {
+  width: var(--yy-container);
+  margin-inline: auto;
+}
+
+/* Section heads sit at the same left edge as the body */
+.yy-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: clamp(48px, 6vw, 88px);
+  max-width: 64ch;
+}
+
+.yy-section-num {
+  font-family: var(--yy-font-en);
+  font-size: 0.74rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--yy-gold);
+}
+
+.yy-section-title {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--yy-text);
+}
+
+.yy-section-subtitle {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  color: var(--yy-text-2);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+/* 6 角色原型参考：3 列 × 2 行 网格 (共享 yy-container 基准) */
+.yy-culture-refs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 36px);
+}
+
+.yy-culture-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.yy-culture-ref .yy-img-frame {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.yy-culture-ref-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--yy-gold);
+  background: rgba(16, 16, 15, 0.55);
+  padding: 5px 9px;
+  backdrop-filter: blur(6px);
+}
+
+.yy-culture-ref-cap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.yy-culture-ref-name {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--yy-text);
+  letter-spacing: 0.04em;
+}
+
+.yy-culture-ref-en {
+  font-family: var(--yy-font-en);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--yy-text-3);
+  text-transform: uppercase;
+}
+
+/* Body sits underneath the 6-grid, full reading width */
+.yy-culture-body {
+  max-width: var(--yy-reading);
+}
+
+.yy-culture-body p {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+  line-height: 2;
+  color: var(--yy-text-2);
+  white-space: pre-line;
+}
+
+/* Image frame */
+.yy-img-frame {
+  position: relative;
+  width: 100%;
+  background: var(--yy-bg-3);
+  border: 1px solid var(--yy-line-2);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.yy-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-out, ease);
+}
+
+.yy-img-frame:hover img { transform: scale(1.03); }
+
+.yy-img-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--yy-font-en);
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-text);
+  background: linear-gradient(to top, rgba(16, 16, 15, 0.85), transparent);
+}
+.yy-img-cap-cn {
+  font-family: var(--yy-font-cn);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--yy-text-2);
+}
+
+/* ============================================================
+   03 · DESIGN
+   ============================================================
+   Restructured: title block + intro share the container with
+   the rest of the page; each phase is a horizontal row of
+   [number/title] | [image] | [note], with the title and image
+   sharing the same vertical baseline. The right column holds
+   the description so the left/right mass is balanced.        */
+.yy-design {
+  background: var(--yy-bg);
+  padding: clamp(110px, 14vw, 170px) 0;
+  border-top: 1px solid var(--yy-line);
+  border-bottom: 1px solid var(--yy-line);
+}
+
+.yy-design-inner {
+  width: var(--yy-container);
+  margin-inline: auto;
+}
+
+.yy-design-head { max-width: var(--yy-reading); }
+
+.yy-design-intro {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+  line-height: 2;
+  color: var(--yy-text-2);
+  max-width: var(--yy-reading);
+  /* No negative margin — the intro sits naturally under the head. */
+  margin-top: -8px;
+  margin-bottom: clamp(56px, 6vw, 96px);
+}
+
+.yy-design-intro p {
+  white-space: pre-line;
+}
+
+/* 3 stages as horizontal cards that read top-to-bottom.
+   Each card: number + title on the left, big image in the
+   middle, description on the right. 5/12/5 grid keeps the
+   number/text columns tight and gives the image room.        */
+.yy-design-rail {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 6vw, 96px);
+}
+
+.yy-design-phase {
+  display: grid;
+  grid-template-columns: 5fr 12fr 5fr;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+.yy-design-phase-marker {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.yy-design-phase-num {
+  font-family: var(--yy-font-en);
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  color: var(--yy-gold);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.yy-design-phase-num::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--yy-gold);
+}
+
+.yy-design-phase-cn {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.2rem, 1.4vw, 1.35rem);
+  font-weight: 500;
+  color: var(--yy-text);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.yy-design-phase-img {
+  border-top: 1px solid var(--yy-line-2);
+}
+
+.yy-design-phase-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.yy-design-phase-en {
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-gold-2);
+}
+
+.yy-design-phase-note {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.02rem);
+  line-height: 1.95;
+  color: var(--yy-text-2);
+  max-width: 30ch;
+}
+
+/* ============================================================
+   04 · COLLECTION
+   ============================================================ */
+.yy-collection {
+  background: var(--yy-bg-2);
+  padding: clamp(110px, 14vw, 170px) 0;
+}
+
+.yy-collection-inner {
+  width: var(--yy-container);
+  margin-inline: auto;
+}
+
+.yy-collection-head { max-width: var(--yy-reading); }
+
+.yy-collection-intro {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+  line-height: 2;
+  color: var(--yy-text-2);
+  max-width: var(--yy-reading);
+  margin-top: 8px;
+  margin-bottom: clamp(56px, 6vw, 96px);
+}
+
+.yy-collection-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(80px, 10vw, 140px);
+}
+
+.yy-role {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 96px);
+  align-items: center;
+}
+
+.yy-role--flip {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+.yy-role--flip .yy-role-text { order: 1; }
+.yy-role--flip .yy-role-figure { order: 2; }
+
+.yy-role-figure {
+  position: relative;
+  margin: 0;
+  background: var(--yy-bg-3);
+  border: 1px solid var(--yy-line-2);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.yy-role-num {
+  position: absolute;
+  top: clamp(16px, 2vw, 26px);
+  left: clamp(16px, 2vw, 26px);
+  z-index: 2;
+  font-family: var(--yy-font-en);
+  font-size: 0.74rem;
+  letter-spacing: 0.32em;
+  color: var(--yy-gold);
+  background: rgba(16, 16, 15, 0.55);
+  padding: 6px 10px;
+  backdrop-filter: blur(6px);
+}
+
+.yy-role-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out, ease);
+}
+
+.yy-role-figure:hover .yy-role-img { transform: scale(1.04); }
+
+.yy-role-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 40ch;
+}
+
+.yy-role-name {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  font-weight: 500;
+  color: var(--yy-text);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.yy-role-name-en {
+  font-family: var(--yy-font-en);
+  font-size: 0.74rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-gold);
+  margin-bottom: 8px;
+}
+
+.yy-role-intro {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.02rem);
+  line-height: 1.95;
+  color: var(--yy-text-2);
+}
+
+/* ============================================================
+   05 · PRODUCT SERIES
+   ============================================================ */
+.yy-series {
+  background: var(--yy-bg);
+  padding: clamp(110px, 14vw, 170px) 0;
+  border-top: 1px solid var(--yy-line);
+}
+
+.yy-series-inner {
+  width: var(--yy-container);
+  margin-inline: auto;
+}
+
+.yy-series-head { max-width: var(--yy-reading); }
+
+.yy-series-intro {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+  line-height: 2;
+  color: var(--yy-text-2);
+  max-width: var(--yy-reading);
+  margin-top: 8px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.yy-series-intro p {
+  white-space: pre-line;
+}
+
+.yy-series-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 clamp(48px, 6vw, 80px);
+  padding: 0;
+  list-style: none;
+  font-family: var(--yy-font-cn);
+  font-size: 0.82rem;
+  color: var(--yy-text-2);
+}
+
+.yy-series-kw {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--yy-line-2);
+  letter-spacing: 0.18em;
+}
+
+.yy-series-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 7vw, 96px);
+}
+
+.yy-series-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+.yy-series-row--flip {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+.yy-series-row--flip .yy-series-row-text { order: 1; }
+.yy-series-row--flip .yy-series-row-figure { order: 2; }
+
+.yy-series-row-figure {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 统一尺寸 */
+  background: var(--yy-bg-3);
+  border: 1px solid var(--yy-line-2);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.yy-series-row-num {
+  position: absolute;
+  top: clamp(14px, 1.6vw, 20px);
+  left: clamp(14px, 1.6vw, 20px);
+  z-index: 2;
+  font-family: var(--yy-font-en);
+  font-size: 0.74rem;
+  letter-spacing: 0.32em;
+  color: var(--yy-gold);
+  background: rgba(16, 16, 15, 0.55);
+  padding: 6px 10px;
+  backdrop-filter: blur(6px);
+}
+
+.yy-series-row-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out, ease);
+}
+
+.yy-series-row-figure:hover .yy-series-row-img { transform: scale(1.03); }
+
+.yy-series-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 40ch;
+}
+
+.yy-series-row-title {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.4rem, 1.8vw, 1.6rem);
+  font-weight: 500;
+  color: var(--yy-text);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.yy-series-row-title-en {
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-gold);
+  margin-bottom: 8px;
+}
+
+.yy-series-row-body {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.02rem);
+  line-height: 1.95;
+  color: var(--yy-text-2);
+}
+
+/* ============================================================
+   06 · CLOSING
+   ============================================================ */
+.yy-closing {
+  position: relative;
+  min-height: 80svh;
+  background: var(--yy-bg-2);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.yy-closing-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.yy-closing-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  object-position: center 30%;
+}
+.yy-closing-bg-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 16, 15, 0.78) 0%, rgba(16, 16, 15, 0.92) 100%),
+    radial-gradient(circle at 50% 50%, rgba(200, 166, 106, 0.10), transparent 65%);
+}
+
+.yy-closing-inner {
+  position: relative;
+  z-index: 2;
+  width: var(--yy-container);
+  margin-inline: auto;
+  padding-block: clamp(120px, 16vw, 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.yy-closing-head { display: flex; flex-direction: column; align-items: center; gap: 22px; max-width: var(--yy-reading); }
+
+.yy-closing-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--yy-gold);
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.yy-closing-title {
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: var(--yy-text);
+  text-align: center;
+}
+
+/* Two-line heading used for the final statement:
+   "让传统文化" / "被看见、被喜爱、被收藏" */
+.yy-closing-title .yy-closing-title-line {
+  display: block;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.yy-closing-title-en {
+  font-family: var(--yy-font-en);
+  font-size: clamp(0.74rem, 0.95vw, 0.88rem);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--yy-gold);
+}
+
+.yy-closing-body {
+  margin-top: clamp(40px, 5vw, 64px);
+  font-family: var(--yy-font-cn);
+  font-size: clamp(1rem, 1.1vw, 1.08rem);
+  line-height: 2;
+  color: var(--yy-text-2);
+  max-width: var(--yy-reading);
+  text-align: center;
+}
+
+.yy-closing-body p {
+  white-space: pre-line; /* honor \n in source but let long lines wrap naturally */
+}
+
+.yy-closing-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--yy-reading);
+  margin-top: clamp(60px, 7vw, 100px);
+  padding-top: 32px;
+  border-top: 1px solid var(--yy-line-2);
+  font-family: var(--yy-font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yy-text-2);
+}
+
+.yy-closing-back, .yy-closing-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s var(--ease-out, ease);
+}
+.yy-closing-back:hover, .yy-closing-top:hover { color: var(--yy-gold); }
+.yy-closing-top-arrow { font-size: 0.9rem; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .yy-hero-inner { grid-template-columns: 1fr; }
+  .yy-hero-bg { width: 100%; opacity: 0.6; }
+
+  .yy-culture-refs { grid-template-columns: repeat(2, 1fr); }
+
+  .yy-design-phase { grid-template-columns: 1fr 1fr; }
+  .yy-design-phase-img { grid-column: span 2; }
+  .yy-design-phase-marker { flex-direction: row; align-items: center; }
+  .yy-design-phase-text { grid-column: 1 / -1; }
+
+  .yy-role, .yy-role--flip { grid-template-columns: 1fr; }
+  .yy-role--flip .yy-role-text { order: 2; }
+  .yy-role--flip .yy-role-figure { order: 1; }
+
+  .yy-series-row, .yy-series-row--flip { grid-template-columns: 1fr; }
+  .yy-series-row--flip .yy-series-row-text { order: 2; }
+  .yy-series-row--flip .yy-series-row-figure { order: 1; }
+}
+
+@media (max-width: 640px) {
+  .yy-culture-refs { grid-template-columns: 1fr; }
+
+  .yy-design-phase { grid-template-columns: 1fr; }
+  .yy-design-phase-img { grid-column: auto; }
+  .yy-design-phase-text { grid-column: auto; }
+
+  .yy-collection-grid { gap: clamp(60px, 12vw, 100px); }
+}

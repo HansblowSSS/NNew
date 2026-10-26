@@ -1,0 +1,215 @@
+/* ============================================
+   Navigation — Light Editorial
+   ============================================ */
+
+.nav-capsule {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-nav);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 6px 10px;
+  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.02);
+}
+
+.nav-capsule:hover {
+  border-color: var(--line-strong);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-radius: var(--r-pill);
+  transition: color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(17, 17, 17, 0.03);
+}
+
+.nav-link-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Active state — small Klein Blue underline */
+.nav-link-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translate(-50%, 4px);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue-bright);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.nav-link.is-active {
+  color: var(--blue-bright);
+}
+
+.nav-link.is-active .nav-link-indicator {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ============================================
+   Mobile toggle
+   ============================================ */
+
+.nav-mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: calc(var(--z-nav) + 2);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: border-color 0.3s var(--ease-out);
+}
+
+.nav-mobile-toggle:hover {
+  border-color: var(--blue-bright);
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.4s var(--ease-out), opacity 0.3s var(--ease-out);
+}
+
+.nav-mobile-toggle.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-mobile-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-mobile-toggle.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ============================================
+   Mobile Menu Overlay
+   ============================================ */
+
+.nav-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-nav) + 1);
+  background: rgba(245, 245, 242, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 32px 32px;
+}
+
+.nav-mobile-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-mobile-item {
+  overflow: hidden;
+}
+
+.nav-mobile-link {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-mobile-index {
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+}
+
+.nav-mobile-link.is-active .nav-mobile-index {
+  color: var(--blue-bright);
+}
+
+.nav-mobile-footer {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .nav-capsule {
+    display: none;
+  }
+  .nav-mobile-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-mobile-overlay,
+  .nav-mobile-toggle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-capsule {
+    transition: none;
+  }
+}

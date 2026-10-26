@@ -1,0 +1,198 @@
+/* ============================================
+   Contact — Light Editorial · Slogan led
+   ============================================ */
+
+.contact {
+  padding-top: calc(var(--nav-h) + 80px);
+  padding-bottom: var(--section-y);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-head {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* ============================================
+   Slogan — only one Chinese statement
+   ============================================ */
+
+.contact-statement {
+  padding-bottom: clamp(6rem, 12vw, 10rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-slogan-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  max-width: 920px;
+}
+
+.contact-slogan-en {
+  margin-top: clamp(2rem, 3vw, 2.6rem);
+  display: block;
+  font-family: var(--font-en);
+  font-size: clamp(0.78rem, 0.95vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-widest);
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: 560px;
+}
+
+/* ============================================
+   Phone / Email — small, symmetric
+   ============================================ */
+
+.contact-info {
+  position: relative;
+  padding: clamp(4rem, 9vw, 8rem) 0 clamp(5rem, 10vw, 9rem);
+}
+
+.contact-info-divider {
+  position: absolute;
+  top: clamp(4rem, 12vw, 9rem);
+  bottom: clamp(5rem, 13vw, 10rem);
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 0;
+}
+
+.contact-info-col {
+  display: block;
+}
+
+.contact-info-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 8% 12px 0;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.5s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.contact-info-col + .contact-info-col .contact-info-card {
+  padding: 12px 0 12px 8%;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  color: var(--blue-bright);
+}
+
+.contact-info-label {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.4s var(--ease-out);
+}
+
+.contact-info-card:hover .contact-info-label {
+  color: var(--blue-bright);
+}
+
+.contact-info-value {
+  font-family: var(--font-en);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  line-height: 1.2;
+  word-break: break-all;
+  transition: color 0.4s var(--ease-out);
+}
+
+.contact-info-card:hover .contact-info-value {
+  color: var(--blue-bright);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.contact-footer {
+  margin-top: auto;
+  padding-top: clamp(3rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+
+.contact-footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.contact-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  transition: color 0.3s var(--ease-out);
+}
+
+.contact-footer-link:hover {
+  color: var(--blue-bright);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-info-card,
+  .contact-info-col + .contact-info-col .contact-info-card {
+    padding: 24px 0;
+  }
+  .contact-info-divider {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .contact-slogan-cn {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+}

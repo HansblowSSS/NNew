@@ -1,0 +1,18 @@
+/* ============================================
+   Page Transition wrapper
+   ============================================ */
+
+.page-transition {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  will-change: opacity, filter, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

@@ -1,0 +1,633 @@
+/* ============================================
+   Popmart Poster Detail — Light Editorial
+   All classes are .pop-* prefixed to avoid
+   collisions with the rest of the project.
+   ============================================ */
+
+.pop-detail {
+  padding-top: calc(var(--nav-h) + 24px);
+  padding-bottom: 0;
+  color: var(--text);
+}
+
+/* -----------------------------------------------------------------
+   HERO
+   ----------------------------------------------------------------- */
+
+.pop-hero {
+  position: relative;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 8rem);
+}
+
+.pop-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* Top meta — competition + award as small text, no badge */
+.pop-hero-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.pop-hero-meta-rule {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--blue-bright);
+  margin-right: 6px;
+}
+
+.pop-hero-meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  margin: 0 2px;
+}
+
+.pop-hero-meta-award {
+  color: var(--blue-bright);
+}
+
+/* Title block */
+.pop-hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  max-width: 980px;
+}
+
+.pop-hero-title-en {
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.pop-hero-title-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+/* Lede — comfortable reading width */
+.pop-hero-lede {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 720px;
+}
+
+.pop-hero-tagline {
+  font-family: var(--font-cn);
+  font-size: clamp(1.1rem, 1.55vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.pop-hero-paragraph {
+  font-family: var(--font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Three poster thumbnails */
+.pop-hero-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2.4rem);
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.pop-hero-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pop-hero-thumb-num {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  color: var(--blue-bright);
+}
+
+.pop-hero-thumb-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--surface-soft);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.pop-hero-thumb-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.pop-hero-thumb:hover .pop-hero-thumb-frame {
+  transform: translateY(-4px);
+}
+
+.pop-hero-thumb:hover .pop-hero-thumb-frame img {
+  transform: scale(1.03);
+}
+
+.pop-hero-thumb-label {
+  font-family: var(--font-cn);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+/* -----------------------------------------------------------------
+   SECTION HEAD (Three Posters)
+   ----------------------------------------------------------------- */
+
+.pop-section-head {
+  padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+}
+
+.pop-section-head-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 720px;
+}
+
+.pop-section-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.pop-section-title-en {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* -----------------------------------------------------------------
+   CHAPTER (each poster)
+   No dividers — relies on spacing and image rhythm.
+   ----------------------------------------------------------------- */
+
+.pop-chapter {
+  padding: clamp(4rem, 9vw, 8rem) 0;
+}
+
+.pop-chapter-grid {
+  display: grid;
+  /* SINGLE grid template for ALL chapters — image column is always
+     the same fraction so the three posters are visually identical
+     in size. minmax(0, ...) prevents the text column from
+     expanding its content and squeezing the image. */
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+/* Right-hand variant: simply reverse DOM order, grid columns stay
+   identical so image size is guaranteed equal to other chapters. */
+.pop-chapter-right .pop-chapter-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+}
+
+.pop-chapter-right .pop-chapter-image {
+  order: 2;
+}
+
+.pop-chapter-right .pop-chapter-text {
+  order: 1;
+}
+
+.pop-chapter-image {
+  margin: 0;
+}
+
+.pop-chapter-image-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface-soft);
+  /* Aspect ratio inline so the frame is reserved before image loads
+     (prevents layout shift). */
+}
+
+.pop-chapter-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pop-chapter-image-meta {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--r-pill);
+  color: var(--text);
+}
+
+/* Text column */
+.pop-chapter-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.6vw, 1.4rem);
+  max-width: 460px;
+  /* No min-width — allows the column to shrink to its 1fr share
+     rather than expanding based on intrinsic content width. */
+}
+
+.pop-chapter-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pop-chapter-num {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  color: var(--blue-bright);
+}
+
+.pop-chapter-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-cn);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.pop-chapter-title-en {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pop-chapter-subtitle {
+  font-family: var(--font-cn);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pop-chapter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pop-chapter-body p {
+  font-family: var(--font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+/* -----------------------------------------------------------------
+   WORKFLOW
+   ----------------------------------------------------------------- */
+
+.pop-workflow {
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(17, 17, 17, 0.018) 18%,
+    rgba(17, 17, 17, 0.018) 82%,
+    transparent 100%
+  );
+}
+
+.pop-workflow-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pop-workflow-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.pop-workflow-intro {
+  font-family: var(--font-cn);
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Flow indicator — light hairline + 6 dots */
+.pop-workflow-flow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  padding: 0 4px;
+}
+
+.pop-workflow-flow-rule {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--line) 6%,
+    var(--line) 94%,
+    transparent 100%
+  );
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.pop-workflow-flow-dot {
+  position: relative;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.pop-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.pop-workflow-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(1rem, 2vw, 1.5rem) 0;
+  transition: background 0.4s var(--ease-out);
+}
+
+.pop-workflow-step-num {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  color: var(--blue-bright);
+}
+
+.pop-workflow-step-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.pop-workflow-step-body {
+  font-family: var(--font-cn);
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.pop-workflow-step-tag {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  padding: 4px 8px;
+  background: var(--blue-glow);
+  border-radius: var(--r-pill);
+}
+
+.pop-workflow-step:hover {
+  background: rgba(36, 87, 255, 0.03);
+}
+
+.pop-workflow-step:hover .pop-workflow-step-num {
+  color: var(--blue-bright);
+}
+
+.pop-workflow-step.is-highlight {
+  /* Slightly stronger presence for the AI step */
+  background: rgba(36, 87, 255, 0.025);
+  border-radius: var(--r-md);
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.pop-workflow-step.is-highlight .pop-workflow-step-num {
+  color: var(--blue-bright);
+}
+
+/* -----------------------------------------------------------------
+   CLOSING
+   ----------------------------------------------------------------- */
+
+.pop-closing {
+  position: relative;
+  padding: clamp(6rem, 12vw, 11rem) 0 clamp(5rem, 10vw, 9rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pop-closing-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pop-closing-glow {
+  position: absolute;
+  width: clamp(220px, 30vw, 380px);
+  height: clamp(220px, 30vw, 380px);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.42;
+}
+
+.pop-closing-glow--scenery {
+  top: 8%;
+  left: 12%;
+  background: radial-gradient(circle, rgba(82, 160, 108, 0.5), transparent 70%);
+}
+
+.pop-closing-glow--emotion {
+  bottom: 12%;
+  right: 8%;
+  background: radial-gradient(circle, rgba(232, 145, 110, 0.45), transparent 70%);
+}
+
+.pop-closing-glow--starry {
+  top: 30%;
+  right: 22%;
+  background: radial-gradient(circle, rgba(36, 87, 255, 0.35), transparent 70%);
+  width: clamp(160px, 20vw, 260px);
+  height: clamp(160px, 20vw, 260px);
+  opacity: 0.32;
+}
+
+.pop-closing-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.pop-closing-en {
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pop-closing-body {
+  font-family: var(--font-cn);
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: var(--text);
+  max-width: 600px;
+}
+
+.pop-closing-cta {
+  margin-top: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.pop-closing-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 12px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
+}
+
+.pop-closing-link:hover {
+  color: var(--blue-bright);
+  border-color: var(--blue-bright);
+  background: rgba(36, 87, 255, 0.04);
+}
+
+/* -----------------------------------------------------------------
+   RESPONSIVE
+   ----------------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .pop-chapter-grid,
+  .pop-chapter-right .pop-chapter-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .pop-chapter-right .pop-chapter-image {
+    order: 2; /* Always show image second on mobile for consistent flow */
+  }
+  .pop-chapter-right .pop-chapter-text {
+    order: 1;
+  }
+  .pop-chapter-text {
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .pop-hero-thumbs,
+  .pop-workflow-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .pop-workflow-flow {
+    display: none; /* too cramped on small screens */
+  }
+  .pop-chapter-title {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+  }
+  .pop-closing-glow {
+    opacity: 0.28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop-hero-thumb-frame,
+  .pop-hero-thumb-frame img {
+    transition: none !important;
+  }
+  .pop-hero-thumb:hover .pop-hero-thumb-frame {
+    transform: none !important;
+  }
+}

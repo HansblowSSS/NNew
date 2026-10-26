@@ -1,0 +1,872 @@
+/* ============================================
+   Experience — Light Editorial · CN-led
+   ============================================ */
+
+.experience {
+  padding-top: calc(var(--nav-h) + 80px);
+  padding-bottom: var(--section-y);
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* ============================================
+   Header — metadata only, no body text in narrow col
+   ============================================ */
+
+.exp-header {
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.exp-header-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+  margin-top: 24px;
+}
+
+.exp-header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exp-title {
+  font-family: var(--font-cn);
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.exp-title-accent {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  display: inline-block;
+}
+
+.exp-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.exp-header-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.exp-header-meta-val {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  color: var(--text);
+  text-align: right;
+}
+
+/* ============================================
+   Section labels — consistent across page
+   ============================================ */
+
+.exp-section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.exp-section-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.exp-content-sub {
+  font-family: var(--font-cn);
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  margin-top: 8px;
+  max-width: 640px;
+}
+
+/* ============================================
+   Studio — generous whitespace, body intro
+   ============================================ */
+
+.exp-company {
+  padding-top: clamp(6rem, 11vw, 11rem);
+}
+
+.exp-company-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.exp-company-brand-en {
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.exp-company-brand-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0;
+}
+
+.exp-company-text {
+  max-width: 760px;
+}
+
+.exp-company-text p {
+  font-family: var(--font-cn);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 2;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.exp-company-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+}
+
+.exp-company-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--blue-bright);
+  color: var(--blue-bright);
+  transition: gap 0.5s var(--ease-out);
+}
+
+.exp-company-link:hover {
+  gap: 18px;
+}
+
+.exp-company-arrow {
+  transition: transform 0.4s var(--ease-out);
+}
+.exp-company-link:hover .exp-company-arrow {
+  transform: translateX(6px);
+}
+
+.exp-company-url {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  text-transform: lowercase;
+}
+
+/* ============================================
+   Platforms — minimal three-col editorial list
+   ============================================ */
+
+.exp-platforms-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-platform-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 140px 100px 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: baseline;
+  padding: clamp(1.6rem, 3vw, 2.2rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.5s var(--ease-out), padding 0.5s var(--ease-out);
+}
+
+.exp-platform-row:hover {
+  background: rgba(36, 87, 255, 0.04);
+  padding-left: 16px;
+}
+
+.exp-platform-name-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--blue-bright);
+}
+
+.exp-platform-name-cn {
+  font-family: var(--font-cn);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.exp-platform-num {
+  font-family: var(--font-en);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-align: right;
+}
+
+.exp-platform-meta {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  letter-spacing: 0;
+}
+
+.exp-platform-meta-soft {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+
+.exp-platforms-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   My Role — editorial list (no giant cards)
+   ============================================ */
+
+.exp-role-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.exp-role-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr 32px;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: baseline;
+  padding: clamp(1.4rem, 2.5vw, 2rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.5s var(--ease-out), background 0.4s var(--ease-out);
+}
+
+.exp-role-row:hover {
+  padding-left: 16px;
+  background: rgba(36, 87, 255, 0.03);
+}
+
+.exp-role-num {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  color: var(--blue-bright);
+}
+
+.exp-role-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.exp-role-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.exp-role-arrow {
+  font-family: var(--font-en);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  text-align: right;
+}
+
+/* ============================================
+   Selected Content
+   ============================================ */
+
+.exp-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.exp-content-item {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.exp-content-cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-soft);
+  border-radius: 2px;
+  cursor: none;
+}
+
+/* ---- Cover image (real thumbnail) ---- */
+.exp-content-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+}
+
+/* ---- Fallback (no cover supplied) ---- */
+.exp-content-cover-img--fallback {
+  position: relative;
+  inset: auto;
+  background:
+    radial-gradient(
+      ellipse at 30% 30%,
+      rgba(36, 87, 255, 0.10) 0%,
+      transparent 60%
+    ),
+    linear-gradient(135deg, #ECECE7 0%, #D9D9D2 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: clamp(1rem, 2vw, 1.8rem);
+}
+
+/* ---- Metadata overlay sitting on top of the thumbnail ---- */
+.exp-content-cover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: clamp(1rem, 2vw, 1.8rem);
+  background: linear-gradient(
+    to top,
+    rgba(12, 12, 14, 0.55) 0%,
+    rgba(12, 12, 14, 0.18) 38%,
+    rgba(12, 12, 14, 0) 68%
+  );
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+.exp-content-cover:hover .exp-content-cover-img {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+.exp-content-cover-platform {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* On top of a thumbnail the chips need to stay legible */
+.exp-content-cover-overlay .exp-content-cover-platform {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.exp-content-cover-num {
+  font-family: var(--font-en);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.exp-content-cover-overlay .exp-content-cover-num {
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.exp-content-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 4px;
+}
+
+.exp-content-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.exp-content-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exp-content-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.exp-content-meta-val {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  color: var(--text);
+  text-align: right;
+}
+
+.exp-content-meta-role {
+  font-family: var(--font-en);
+  letter-spacing: var(--tracking-wide);
+  color: var(--blue-bright);
+  text-transform: uppercase;
+  font-size: var(--fs-micro);
+}
+
+/* ---- External link to the original video ---- */
+.exp-content-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  align-self: flex-start;
+  color: var(--blue-bright);
+  text-decoration: none;
+  transition: color 0.35s var(--ease-out);
+}
+
+.exp-content-link-arrow {
+  font-size: 0.95em;
+  line-height: 1;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.exp-content-link-cn {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0;
+  position: relative;
+}
+
+/* Underline grows from the left on hover */
+.exp-content-link-cn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.exp-content-link-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.35s var(--ease-out);
+}
+
+.exp-content-link:hover,
+.exp-content-link:focus-visible {
+  color: var(--klein-blue);
+}
+
+.exp-content-link:hover .exp-content-link-cn::after {
+  transform: scaleX(1);
+}
+
+.exp-content-link:hover .exp-content-link-arrow {
+  transform: translate(3px, -3px);
+}
+
+.exp-content-link:hover .exp-content-link-en {
+  color: var(--text-secondary);
+}
+
+.exp-content-link:focus-visible {
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   Content Flow — confirmed data
+   ============================================ */
+
+.exp-impact-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.exp-impact-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: baseline;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.4s var(--ease-out);
+}
+
+.exp-impact-row:hover {
+  background: rgba(36, 87, 255, 0.03);
+}
+
+.exp-impact-num {
+  font-family: var(--font-en);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tighter);
+  line-height: 1;
+  color: var(--text);
+}
+
+.exp-impact-label {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  align-self: center;
+}
+
+/* ============================================
+   Content Flow — Chinese-led process
+   ============================================ */
+
+/* --- Module title: Chinese primary, English secondary --- */
+.exp-flow-title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-flow-title-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.exp-flow-title-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Hairline track that runs behind the stages --- */
+.exp-flow-track {
+  position: relative;
+}
+
+.exp-flow-list {
+  --exp-flow-gap: clamp(1.2rem, 2vw, 2rem);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 0;
+  row-gap: clamp(2.4rem, 4vw, 3.4rem);
+}
+
+.exp-flow-step-wrap {
+  position: relative;
+  padding-top: 26px;
+  padding-right: var(--exp-flow-gap);
+}
+
+.exp-flow-step-wrap:last-child {
+  padding-right: 0;
+}
+
+/* Node marker sitting on the track */
+.exp-flow-step-wrap::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+/* Hairline segment linking this stage to the next */
+.exp-flow-step-wrap::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  width: calc(100% - 7px);
+  height: 1px;
+  background: var(--line-strong);
+  transition: background 0.4s var(--ease-out);
+}
+
+.exp-flow-step-wrap:last-child::after {
+  display: none;
+}
+
+.exp-flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  height: 100%;
+}
+
+.exp-flow-step-num {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  color: var(--blue-bright);
+  transition: color 0.4s var(--ease-out);
+}
+
+/* Chinese stage name — the visual anchor of each stage */
+.exp-flow-step-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  color: var(--text);
+  transition: color 0.4s var(--ease-out);
+}
+
+/* Short explanation — muted body copy */
+.exp-flow-step-summary {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* English label — supporting information only */
+.exp-flow-step-en {
+  margin-top: auto;
+  padding-top: 14px;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.4s var(--ease-out);
+}
+
+/* --- Hover: number, name and marker shift to blue --- */
+.exp-flow-step-wrap:hover .exp-flow-step-num,
+.exp-flow-step-wrap:hover .exp-flow-step-title {
+  color: var(--blue-bright);
+}
+
+.exp-flow-step-wrap:hover::before {
+  background: var(--blue-bright);
+  border-color: var(--blue-bright);
+}
+
+.exp-flow-step-wrap:hover::after {
+  background: var(--blue-bright);
+}
+
+/* ============================================
+   Closing
+   ============================================ */
+
+.exp-closing-text {
+  font-family: var(--font-cn);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 880px;
+  letter-spacing: 0;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .exp-header-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .exp-platform-row {
+    grid-template-columns: 110px 1fr 100px 100px;
+  }
+  .exp-platform-meta-soft {
+    grid-column: 2;
+    margin-top: 8px;
+  }
+  .exp-role-row {
+    grid-template-columns: 70px 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .exp-role-arrow {
+    display: none;
+  }
+
+  /* ---- Process module: 3 columns x 2 rows ---- */
+  .exp-flow-list {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: clamp(1.6rem, 3vw, 2.4rem);
+    row-gap: clamp(2.6rem, 5vw, 3.6rem);
+  }
+  /* Only the segment that would cross from row 1 into row 2 is dropped */
+  .exp-flow-step-wrap:nth-child(3)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-content-item {
+    grid-template-columns: 1fr;
+  }
+  .exp-platform-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .exp-platform-num,
+  .exp-platform-meta,
+  .exp-platform-meta-soft {
+    text-align: left;
+  }
+  .exp-impact-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .exp-role-row {
+    grid-template-columns: 60px 1fr;
+    gap: 0.8rem;
+  }
+  .exp-role-en {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  /* ---- Process module: vertical flow ---- */
+  .exp-flow-list {
+    grid-template-columns: 1fr;
+    row-gap: clamp(2.2rem, 6vw, 3rem);
+  }
+  .exp-flow-step-wrap {
+    padding-top: 24px;
+    padding-left: 26px;
+  }
+  /* Vertical connector between stages instead of horizontal */
+  .exp-flow-step-wrap::before {
+    top: 0;
+    left: 3px;
+    width: 7px;
+    height: 7px;
+    border-color: var(--line-strong);
+  }
+  .exp-flow-step-wrap::after {
+    top: 6px;
+    left: 6px;
+    width: 1px;
+    height: calc(100% + clamp(2.2rem, 6vw, 3rem) - 6px);
+    background: var(--line-strong);
+  }
+  /* Restore the segment that the tablet layout dropped */
+  .exp-flow-step-wrap:nth-child(3)::after {
+    display: block;
+  }
+  .exp-flow-step-wrap:last-child::after {
+    display: none;
+  }
+  .exp-flow-step-en {
+    margin-top: 0;
+    padding-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-flow-step-num,
+  .exp-flow-step-title,
+  .exp-flow-step-en,
+  .exp-flow-step-wrap::before,
+  .exp-flow-step-wrap::after {
+    transition: none !important;
+  }
+  .exp-flow-step-wrap:hover::before {
+    background: var(--bg);
+    border-color: var(--line-strong);
+  }
+  .exp-flow-step-wrap:hover::after {
+    background: var(--line-strong);
+  }
+}

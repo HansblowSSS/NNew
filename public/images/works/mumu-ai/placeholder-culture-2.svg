@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+  <rect width="400" height="400" fill="#E8DCC8"/>
+
+  <!-- Huazhao opera pattern: female figure with fan -->
+  <g transform="translate(200, 200)">
+    <!-- Background pattern -->
+    <g opacity="0.3">
+      <circle cx="-120" cy="-80" r="30" fill="none" stroke="#C78C59" stroke-width="1.5"/>
+      <circle cx="120" cy="-80" r="30" fill="none" stroke="#C78C59" stroke-width="1.5"/>
+      <circle cx="-120" cy="80" r="30" fill="none" stroke="#C78C59" stroke-width="1.5"/>
+      <circle cx="120" cy="80" r="30" fill="none" stroke="#C78C59" stroke-width="1.5"/>
+    </g>
+
+    <!-- Center figure placeholder -->
+    <g>
+      <!-- Dress/skirt -->
+      <path d="M -50 30 Q 0 60 50 30 L 60 90 L -60 90 Z" fill="#C78C59"/>
+      <line x1="-30" y1="50" x2="0" y2="80" stroke="#FFFDF7" stroke-width="1.5"/>
+      <line x1="30" y1="50" x2="0" y2="80" stroke="#FFFDF7" stroke-width="1.5"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="20" rx="20" ry="25" fill="#F4E4D4"/>
+      <!-- Head -->
+      <circle cx="0" cy="-20" r="30" fill="#F4E4D4"/>
+      <!-- Hair decoration -->
+      <ellipse cx="0" cy="-45" rx="20" ry="10" fill="#302C26"/>
+      <circle cx="-15" cy="-40" r="3" fill="#C78C59"/>
+      <circle cx="15" cy="-40" r="3" fill="#C78C59"/>
+      <!-- Eyes -->
+      <ellipse cx="-10" cy="-22" rx="2" ry="3" fill="#302C26"/>
+      <ellipse cx="10" cy="-22" rx="2" ry="3" fill="#302C26"/>
+      <!-- Lips -->
+      <ellipse cx="0" cy="-8" rx="3" ry="2" fill="#C78C59"/>
+      <!-- Fan -->
+      <path d="M 30 10 L 80 -10 L 75 25 Z" fill="#A9B59A" stroke="#302C26" stroke-width="1"/>
+      <line x1="40" y1="5" x2="75" y2="0" stroke="#302C26" stroke-width="0.5"/>
+      <line x1="45" y1="8" x2="75" y2="10" stroke="#302C26" stroke-width="0.5"/>
+      <line x1="48" y1="14" x2="75" y2="20" stroke="#302C26" stroke-width="0.5"/>
+    </g>
+  </g>
+
+  <g transform="translate(360, 30)" opacity="0.5">
+    <rect x="-40" y="-10" width="80" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#FDFAF4" letter-spacing="2">PH</text>
+  </g>
+</svg>

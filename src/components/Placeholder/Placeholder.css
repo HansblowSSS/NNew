@@ -1,0 +1,119 @@
+/* ============================================
+   Placeholder — missing-asset card
+   Light editorial, calm, clearly labelled.
+   All classes .cpaw-* to match the CoPaw page namespace.
+   ============================================ */
+
+.cpaw-asset {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #F1EFEC;
+  border: 1px dashed rgba(36, 87, 255, 0.28);
+  border-radius: var(--r-md);
+}
+
+.cpaw-asset--real {
+  border: none;
+  background: transparent;
+}
+
+.cpaw-asset--real img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cpaw-asset-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.cpaw-asset-icon {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  position: relative;
+}
+
+.cpaw-asset-icon::before,
+.cpaw-asset-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.cpaw-asset-icon::before {
+  top: 50%;
+  left: 4px;
+  right: 4px;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+
+.cpaw-asset-icon::after {
+  top: 4px;
+  bottom: 4px;
+  left: 50%;
+  width: 1.5px;
+  transform: translateX(-50%);
+}
+
+.cpaw-asset-tag {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.cpaw-asset-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--r-sm);
+}
+
+.cpaw-asset-label {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.cpaw-asset-path {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+
+.cpaw-asset-note {
+  font-family: var(--font-cn);
+  font-size: var(--fs-micro);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.cpaw-asset--video {
+  background: linear-gradient(180deg, #EDEBE7 0%, #E2E0DC 100%);
+}

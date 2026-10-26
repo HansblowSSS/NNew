@@ -1,0 +1,876 @@
+/* ============================================================
+   LiftPod Detail — Light Editorial
+   All classes use .lp-* prefix to avoid collisions.
+   ============================================================ */
+
+/* ----------------------------------------------------------------
+   Global tokens — used across the LiftPod page only.
+   Keeps image rules, spacing, and typography consistent.
+   ---------------------------------------------------------------- */
+.lp-detail {
+  --lp-content-max: 1280px;
+  --lp-gutter: clamp(20px, 4vw, 48px);
+  --lp-section-pad-y: clamp(96px, 11vw, 160px);
+  --lp-grid-gap: clamp(20px, 2.4vw, 32px);
+  --lp-img-radius: 4px;
+  --lp-text: #111111;
+  --lp-text-soft: rgba(17, 17, 17, 0.72);
+  --lp-text-mute: rgba(17, 17, 17, 0.50);
+  --lp-line: rgba(17, 17, 17, 0.10);
+  --lp-bg: #F5F5F2;
+  --lp-surface: #FFFFFF;
+  --lp-blue: #2457FF;
+
+  padding-top: calc(var(--nav-h, 64px));
+  color: var(--lp-text);
+  background: var(--lp-bg);
+}
+
+.lp-detail .container {
+  max-width: var(--lp-content-max);
+  margin: 0 auto;
+  padding-left: var(--lp-gutter);
+  padding-right: var(--lp-gutter);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------------------
+   Shared section heads (numbered, with optional English eyebrow)
+   ---------------------------------------------------------------- */
+.lp-section-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: clamp(20px, 2vw, 28px);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--lp-line);
+}
+
+.lp-section-num {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--lp-blue);
+  font-weight: 500;
+  display: inline-block;
+}
+
+.lp-section-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--lp-text);
+  letter-spacing: 0.005em;
+  margin: 0;
+  grid-column: 2;
+  justify-self: start;
+}
+
+.lp-section-eyebrow-en {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lp-text-mute);
+  font-weight: 500;
+  display: inline-block;
+}
+
+.lp-section-eyebrow-cn {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--lp-text-soft);
+  display: inline-block;
+}
+
+/* ----------------------------------------------------------------
+   Shared image system — used by all sections
+   ---------------------------------------------------------------- */
+.lp-img-frame {
+  overflow: hidden;
+  border-radius: var(--lp-img-radius);
+  background: rgba(0, 0, 0, 0.04);
+  display: block;
+  position: relative;
+}
+.lp-img-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lp-img-frame:hover img { transform: scale(1.025); }
+
+.lp-img-meta {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lp-text-mute);
+  margin-top: 12px;
+  padding-top: 0;
+}
+
+.lp-img-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+.lp-img-caption-title {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--lp-text);
+  margin: 0;
+}
+.lp-img-caption-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--lp-text-soft);
+  margin: 0;
+}
+
+/* ============================================================
+   01 · HERO
+   ----------------------------------------------------------------
+   - Background scene fills 100svh on desktop, min 600px.
+   - Text group is centered (left: 50% / top: 45%) with
+     translate(-50%, -50%). It does NOT depend on scroll progress.
+   - Plays one-shot entry animation; remains at final state.
+   ============================================================ */
+.lp-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: block;
+}
+
+.lp-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lp-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Asymmetric veil — softer overall, slightly darker near the
+   centred text band so the type reads without a heavy overlay. */
+.lp-hero-bg-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(10, 12, 16, 0.32) 0%,
+      rgba(10, 12, 16, 0.10) 60%,
+      rgba(10, 12, 16, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(10, 12, 16, 0.10) 0%,
+      rgba(10, 12, 16, 0.05) 45%,
+      rgba(10, 12, 16, 0.18) 100%
+    );
+  pointer-events: none;
+}
+
+/* Back link — top-left, always visible */
+.lp-hero-back {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding-left: var(--lp-gutter);
+  padding-right: var(--lp-gutter);
+}
+.lp-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-family: var(--font-en);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.lp-back-link:hover { color: #fff; gap: 10px; }
+
+/* Centered text group. Uses flexbox on the stage for reliable
+   vertical centering; horizontal centering is handled by align-items.
+   No scroll logic controls opacity, transform, or visibility. */
+.lp-hero-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Optical lift: pull the text block slightly above the geometric
+     centre so a tall text stack still feels centred. */
+  padding-bottom: 4vh;
+}
+
+.lp-hero-center {
+  pointer-events: auto;
+  text-align: center;
+  max-width: min(720px, 88vw);
+  color: #fff;
+  /* No opacity/transform/visibility controlled by scroll.
+     One-shot CSS entry animation; animation-fill-mode: both
+     keeps the final state forever, independent of scroll. */
+  animation: lp-hero-enter 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes lp-hero-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.lp-hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 22px;
+  font-weight: 500;
+}
+
+.lp-hero-title-cn {
+  font-size: clamp(2.4rem, 5.6vw, 5.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: #fff;
+  margin: 0 0 24px;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.40);
+}
+
+.lp-hero-subtitle {
+  font-size: clamp(0.85rem, 1.05vw, 0.98rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto 28px;
+  max-width: 640px;
+}
+
+.lp-hero-scroll {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  display: inline-block;
+  /* Subtle hover-bob to suggest scrolling */
+  animation: lp-hero-bob 2.6s ease-in-out infinite;
+}
+
+@keyframes lp-hero-bob {
+  0%, 100% { transform: translateY(0); opacity: 0.65; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* ============================================================
+   02 · POSITIONING
+   ============================================================ */
+.lp-positioning {
+  padding: var(--lp-section-pad-y) 0 calc(var(--lp-section-pad-y) * 0.7);
+  background: var(--lp-bg);
+}
+
+.lp-positioning-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 5vw, 80px);
+  align-items: start;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.lp-positioning-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lp-positioning-title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--lp-text);
+  letter-spacing: 0.005em;
+  margin: 0;
+}
+
+.lp-positioning-one {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--lp-text-soft);
+  margin: 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--lp-blue);
+}
+
+.lp-positioning-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lp-positioning-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lp-positioning-body p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--lp-text-soft);
+  margin: 0;
+}
+
+.lp-positioning-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lp-positioning-keywords li {
+  font-size: 13px;
+  color: var(--lp-text);
+  border: 1px solid var(--lp-line);
+  background: var(--lp-surface);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.lp-positioning-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--lp-grid-gap);
+  border-top: 1px solid var(--lp-line);
+  padding-top: clamp(28px, 3vw, 40px);
+}
+
+.lp-positioning-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-positioning-block-num {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--lp-blue);
+  font-weight: 500;
+  display: block;
+}
+
+.lp-positioning-block-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--lp-text);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.lp-positioning-block-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--lp-text-soft);
+  margin: 0;
+}
+
+/* ============================================================
+   03 · OVERVIEW — two-column uniform grid
+   ============================================================ */
+.lp-overview {
+  padding: var(--lp-section-pad-y) 0;
+  background: var(--lp-bg);
+}
+
+.lp-overview-body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--lp-text-soft);
+  max-width: 640px;
+  margin: 0 0 clamp(40px, 5vw, 64px);
+}
+
+.lp-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--lp-grid-gap);
+}
+
+.lp-overview-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lp-overview-cell .lp-img-frame {
+  aspect-ratio: 4 / 3;
+}
+
+/* ============================================================
+   04 · DETAILS — strict three-column uniform grid
+   ============================================================ */
+.lp-details {
+  padding: var(--lp-section-pad-y) 0;
+  background: var(--lp-surface);
+}
+
+.lp-details-body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--lp-text-soft);
+  max-width: 640px;
+  margin: 0 0 clamp(40px, 5vw, 64px);
+}
+
+.lp-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--lp-grid-gap);
+}
+
+.lp-details-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+/* All three cells share the same aspect ratio and use object-fit:
+   contain so the product is never cropped or stretched. */
+.lp-details-cell .lp-img-frame {
+  aspect-ratio: 4 / 5;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.lp-details-cell .lp-img-caption {
+  margin-top: 18px;
+}
+
+/* ============================================================
+   05 · STORAGE STRUCTURE
+   ============================================================ */
+.lp-structure {
+  padding: var(--lp-section-pad-y) 0;
+  background: var(--lp-bg);
+}
+
+.lp-structure-body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--lp-text-soft);
+  max-width: 640px;
+  margin: 0 0 clamp(40px, 5vw, 64px);
+}
+
+.lp-structure-visual {
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+.lp-structure-visual .lp-img-frame {
+  aspect-ratio: 16 / 9;
+  background: var(--lp-surface);
+}
+.lp-structure-visual .lp-img-frame img {
+  object-fit: contain;
+}
+
+.lp-structure-annotations {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--lp-grid-gap);
+  border-top: 1px solid var(--lp-line);
+  padding-top: clamp(28px, 3vw, 40px);
+}
+
+.lp-structure-annot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-structure-annot-num {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--lp-blue);
+  font-weight: 500;
+  display: block;
+}
+
+.lp-structure-annot-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lp-structure-annot-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--lp-text);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.lp-structure-annot-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--lp-text-soft);
+  margin: 0;
+}
+
+/* ============================================================
+   06 · LIFTING MOTION — full-bleed background video
+   ----------------------------------------------------------------
+   The video fills the entire viewport as a background. A soft
+   radial veil + bottom-up gradient makes the overlaid type
+   legible without hiding the product. Mirror of the CoPaw
+   "Insight" full-bleed pattern.
+   ============================================================ */
+.lp-motion {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;        /* type sits in the centre */
+  justify-content: center;    /* type sits in the centre */
+  background: #0a0a0c;
+}
+
+.lp-motion-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lp-motion-video,
+.lp-motion-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Soft centred radial veil + top-to-bottom gradient — keeps
+   the overlaid type legible right in the middle of the frame
+   without darkening any one side more than another. */
+.lp-motion-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 60% 55% at 50% 50%,
+      rgba(10, 12, 16, 0.55) 0%,
+      rgba(10, 12, 16, 0.20) 60%,
+      rgba(10, 12, 16, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(10, 12, 16, 0.20) 0%,
+      rgba(10, 12, 16, 0.05) 50%,
+      rgba(10, 12, 16, 0.35) 100%
+    );
+  pointer-events: none;
+}
+
+.lp-motion-inner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.lp-motion-text {
+  max-width: 720px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* centre every child horizontally */
+  text-align: center;         /* centre every line of type */
+  gap: 20px;
+}
+
+/* Top tag — mirrors the CoPaw SectionTag layout: 06 / rule /
+   EN eyebrow / CN eyebrow */
+.lp-motion-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.lp-motion-tag-num {
+  color: var(--lp-blue);
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+.lp-motion-tag-rule {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--lp-blue);
+}
+.lp-motion-tag-en {
+  color: rgba(255, 255, 255, 0.85);
+}
+.lp-motion-tag-cn {
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.lp-motion-title {
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 0.005em;
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.40);
+}
+
+.lp-motion-body {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+  max-width: 520px;
+}
+
+.lp-motion-states {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  color: var(--lp-text-mute);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.lp-motion-state {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+.lp-motion-state--blue {
+  color: var(--lp-blue);
+  font-weight: 600;
+}
+.lp-motion-arrow {
+  font-size: 12px;
+  opacity: 0.45;
+  color: #fff;
+}
+
+/* ============================================================
+   07 · PROCESS — three-column uniform grid
+   ============================================================ */
+.lp-process {
+  padding: var(--lp-section-pad-y) 0;
+  background: var(--lp-bg);
+}
+
+.lp-process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--lp-grid-gap);
+}
+
+.lp-process-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lp-process-cell .lp-img-frame {
+  aspect-ratio: 4 / 5;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.lp-process-meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lp-process-num {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--lp-blue);
+  font-weight: 500;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.lp-process-names {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lp-process-en {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lp-text-mute);
+  display: block;
+}
+.lp-process-cn {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lp-text);
+  display: block;
+}
+
+/* ============================================================
+   08 · CLOSING
+   ============================================================ */
+.lp-closing {
+  padding: clamp(110px, 14vw, 180px) 0 clamp(80px, 10vw, 140px);
+  background: var(--lp-bg);
+}
+
+.lp-closing-inner { max-width: 680px; }
+
+.lp-closing-head { margin-bottom: 40px; }
+.lp-closing-head .lp-section-num { margin-bottom: 16px; }
+
+.lp-closing-title {
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 500;
+  line-height: 1.22;
+  color: var(--lp-text);
+  letter-spacing: 0.005em;
+  margin: 0 0 16px;
+}
+.lp-closing-body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--lp-text-soft);
+  margin: 0;
+}
+
+.lp-closing-actions { display: flex; flex-direction: column; gap: 16px; }
+
+.lp-closing-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--lp-text);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.lp-closing-link:hover { color: var(--lp-blue); gap: 14px; }
+.lp-closing-link:focus-visible { outline: 2px solid var(--lp-blue); outline-offset: 4px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .lp-positioning-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 3vw, 32px);
+  }
+  .lp-positioning-blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lp-details-grid,
+  .lp-process-grid,
+  .lp-structure-annotations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lp-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Hero: keep centred text. Slightly higher anchor so the
+     product region remains visible above the title. */
+  .lp-hero-bg-img {
+    object-position: center 30%;
+  }
+  .lp-hero-bg-veil {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 12, 16, 0.10) 0%,
+        rgba(10, 12, 16, 0.25) 40%,
+        rgba(10, 12, 16, 0.65) 75%,
+        rgba(10, 12, 16, 0.88) 100%
+      );
+  }
+  .lp-hero-center {
+    max-width: 88vw;
+  }
+  .lp-hero-title-cn {
+    font-size: clamp(1.8rem, 7.2vw, 2.6rem);
+  }
+
+  /* Section heads collapse: num + title inline */
+  .lp-section-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 6px;
+  }
+  .lp-section-title { grid-column: 1; }
+  .lp-section-eyebrow-en,
+  .lp-section-eyebrow-cn {
+    display: inline-block;
+  }
+  .lp-section-eyebrow-cn { margin-top: 6px; }
+
+  /* All multi-column grids fall back to a single column. */
+  .lp-positioning-blocks,
+  .lp-details-grid,
+  .lp-structure-annotations,
+  .lp-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-motion-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+  .lp-motion-body {
+    font-size: 14px;
+  }
+  .lp-motion-states {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-img-frame img { transition: none; }
+  .lp-hero-scroll { animation: none; }
+  .lp-hero-bg-img { transition: none; }
+  .lp-hero-center { animation: none; }
+}

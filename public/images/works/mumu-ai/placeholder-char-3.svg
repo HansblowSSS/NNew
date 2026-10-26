@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="ch-bg-3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4ECDF"/>
+      <stop offset="100%" stop-color="#D9C9B0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#ch-bg-3)"/>
+
+  <!-- Huazhao Opera female character -->
+  <g transform="translate(300, 230)">
+    <!-- Hair bun -->
+    <ellipse cx="0" cy="-110" rx="50" ry="30" fill="#302C26"/>
+    <ellipse cx="-40" cy="-90" rx="15" ry="20" fill="#302C26"/>
+    <ellipse cx="40" cy="-90" rx="15" ry="20" fill="#302C26"/>
+    <!-- Hairpin decoration -->
+    <circle cx="-50" cy="-100" r="4" fill="#C78C59"/>
+    <circle cx="50" cy="-100" r="4" fill="#C78C59"/>
+    <line x1="-50" y1="-100" x2="-65" y2="-115" stroke="#C78C59" stroke-width="2"/>
+    <line x1="50" y1="-100" x2="65" y2="-115" stroke="#C78C59" stroke-width="2"/>
+    <!-- Face -->
+    <ellipse cx="0" cy="-20" rx="60" ry="70" fill="#F4E4D4"/>
+    <!-- Eyebrows (willow leaf) -->
+    <path d="M -30 -45 Q -20 -50 -10 -45" fill="none" stroke="#302C26" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 10 -45 Q 20 -50 30 -45" fill="none" stroke="#302C26" stroke-width="2" stroke-linecap="round"/>
+    <!-- Eyes -->
+    <path d="M -25 -30 Q -20 -28 -15 -30" fill="none" stroke="#302C26" stroke-width="1.5"/>
+    <path d="M 15 -30 Q 20 -28 25 -30" fill="none" stroke="#302C26" stroke-width="1.5"/>
+    <!-- Nose -->
+    <line x1="0" y1="-25" x2="0" y2="-10" stroke="#A8967A" stroke-width="1"/>
+    <!-- Lips (red dot style) -->
+    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#C78C59"/>
+    <!-- Cheek blush -->
+    <ellipse cx="-30" cy="-5" rx="10" ry="6" fill="#C78C59" opacity="0.3"/>
+    <ellipse cx="30" cy="-5" rx="10" ry="6" fill="#C78C59" opacity="0.3"/>
+    <!-- Collar -->
+    <path d="M -50 50 Q 0 70 50 50 L 50 80 L -50 80 Z" fill="#C78C59"/>
+    <path d="M -40 60 Q 0 75 40 60" fill="none" stroke="#FFFDF7" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(540, 30)" opacity="0.5">
+    <rect x="-50" y="-10" width="100" height="20" rx="10" fill="#A9B59A"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FDFAF4" letter-spacing="2">PLACEHOLDER</text>
+  </g>
+  <text x="300" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#756B5E" letter-spacing="3">XIAN GU � 03</text>
+</svg>

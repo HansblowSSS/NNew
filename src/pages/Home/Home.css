@@ -1,0 +1,583 @@
+/* ============================================
+   Home — Portfolio Overview Page
+   ============================================ */
+
+.home {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ============================================
+   Shared Overview Section Layout
+   ============================================ */
+
+.home-overview {
+  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.home-overview-label {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Shared "View More" link */
+.home-overview-more {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.home-overview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.home-overview-link:hover {
+  color: var(--blue-bright);
+  border-bottom-color: var(--blue-bright);
+}
+
+.home-overview-arrow {
+  font-size: 0.85em;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.home-overview-link:hover .home-overview-arrow {
+  transform: translateX(6px);
+}
+
+/* ============================================
+   02 · About Overview
+   ============================================ */
+
+.home-about-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.home-about-portrait-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home-about-portrait {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--surface-soft);
+  border-radius: 2px;
+}
+
+.home-about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.02) brightness(0.98);
+  transition: filter 0.6s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.home-about-portrait:hover img {
+  filter: contrast(1.05) brightness(1);
+  transform: scale(1.02);
+}
+
+.home-about-portrait-meta {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 8px;
+}
+
+.home-about-name {
+  font-family: var(--font-cn);
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.home-about-role {
+  font-family: var(--font-cn);
+  font-size: var(--fs-h4);
+  color: var(--text-secondary);
+  letter-spacing: 0;
+  margin-top: -6px;
+}
+
+.home-about-intro {
+  font-family: var(--font-cn);
+  font-size: var(--fs-body);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 620px;
+}
+
+/* ============================================
+   03 · Experience Overview
+   ============================================ */
+
+.home-exp-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  padding-bottom: clamp(2rem, 3.5vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.home-exp-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-exp-meta-brand {
+  font-family: var(--font-cn);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.home-exp-meta-company {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  letter-spacing: 0;
+}
+
+.home-exp-meta-role {
+  font-family: var(--font-cn);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.home-exp-meta-period {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.home-exp-brief {
+  font-family: var(--font-cn);
+  font-size: var(--fs-body);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* Scale data strip */
+.home-exp-scale {
+  border-top: 1px solid var(--line);
+}
+
+.home-exp-scale-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+.home-exp-scale-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(1.4rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+  border-right: 1px solid var(--line);
+  transition: background 0.4s var(--ease-out);
+}
+
+.home-exp-scale-item:last-child {
+  border-right: none;
+}
+
+.home-exp-scale-item:hover {
+  background: rgba(36, 87, 255, 0.03);
+}
+
+.home-exp-scale-num {
+  font-family: var(--font-en);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+  line-height: 1;
+}
+
+.home-exp-scale-label {
+  font-family: var(--font-cn);
+  font-size: var(--fs-micro);
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   04 · Works Overview
+   ============================================ */
+
+.home-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 2.6vw, 2.4rem);
+}
+
+.home-works-item {
+  display: block;
+}
+
+.home-works-card {
+  display: block;
+  position: relative;
+}
+
+.home-works-cover {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--surface-soft);
+  border-radius: 2px;
+}
+
+.home-works-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.home-works-card:hover .home-works-cover img {
+  transform: scale(1.04);
+}
+
+.home-works-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 14px;
+  align-items: baseline;
+  margin-top: 16px;
+}
+
+.home-works-num {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-widest);
+  color: var(--blue-bright);
+}
+
+.home-works-name {
+  font-family: var(--font-cn);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  letter-spacing: 0;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.home-works-card:hover .home-works-name {
+  transform: translateY(-2px);
+}
+
+.home-works-cat {
+  grid-column: 1 / -1;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ============================================
+   05 · Awards Overview
+   ============================================ */
+
+.home-awards-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-awards-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 240px;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: baseline;
+  padding: clamp(1.4rem, 2.4vw, 2rem) 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: padding 0.4s var(--ease-out), background 0.4s var(--ease-out);
+}
+
+.home-awards-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--blue-bright);
+  transition: width 0.4s var(--ease-out);
+  transform: translateY(-50%);
+}
+
+.home-awards-row:hover {
+  padding-left: 14px;
+  background: rgba(36, 87, 255, 0.03);
+}
+
+.home-awards-row:hover::before {
+  width: 8px;
+}
+
+.home-awards-year {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-wide);
+  color: var(--blue-bright);
+  text-transform: uppercase;
+}
+
+.home-awards-title {
+  font-family: var(--font-cn);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.home-awards-level {
+  font-family: var(--font-cn);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  letter-spacing: 0;
+  text-align: right;
+}
+
+/* ============================================
+   06 · Capabilities Overview
+   ============================================ */
+
+.home-caps-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-caps-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: baseline;
+  padding: clamp(1.2rem, 2.2vw, 1.8rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.4s var(--ease-out);
+}
+
+.home-caps-row:hover {
+  padding-left: 12px;
+}
+
+.home-caps-num {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-muted);
+}
+
+.home-caps-title-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+.home-caps-title-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ============================================
+   07 · Contact Overview
+   ============================================ */
+
+.home-contact-overview {
+  border-bottom: none;
+}
+
+.home-contact-slogan {
+  max-width: 920px;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.home-contact-slogan-cn {
+  font-family: var(--font-cn);
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.home-contact-links {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 720px;
+}
+
+.home-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.home-contact-item-label {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-contact-item-val {
+  font-family: var(--font-en);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s var(--ease-out);
+  word-break: break-all;
+}
+
+.home-contact-item-val:hover {
+  color: var(--blue-bright);
+}
+
+.home-contact-divider {
+  background: var(--line);
+  width: 1px;
+  margin: 0 clamp(2rem, 4vw, 3rem);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .home-works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-exp-scale-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .home-exp-scale-item:nth-child(3) {
+    border-right: none;
+  }
+  .home-awards-row {
+    grid-template-columns: 100px 1fr;
+  }
+  .home-awards-level {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-about-grid {
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+  }
+  .home-exp-meta {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-overview {
+    padding-top: clamp(3.5rem, 8vw, 6rem);
+    padding-bottom: clamp(3.5rem, 8vw, 6rem);
+  }
+  .home-about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .home-works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-exp-scale-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-exp-scale-item:nth-child(2n) {
+    border-right: none;
+  }
+  .home-exp-scale-item:nth-child(3) {
+    border-right: 1px solid var(--line);
+  }
+  .home-awards-row {
+    grid-template-columns: 90px 1fr;
+    gap: 8px 16px;
+  }
+  .home-caps-row {
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+  }
+  .home-caps-title-en {
+    display: none;
+  }
+  .home-contact-links {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .home-contact-divider {
+    display: none;
+  }
+  .home-contact-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-contact-item:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-works-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-exp-scale-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-awards-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
